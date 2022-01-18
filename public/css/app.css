@@ -11002,10 +11002,22 @@ aside ul .list-group-item a:hover {
   border-radius: 20px;
   margin-left: 200px;
   margin-top: 50px;
+  overflow: auto;
 }
 
 .dashboard-content form .form-group textarea {
   height: 200px;
   resize: none;
+}
+
+.dashboard-content .user-posts a {
+  color: unset;
+  transition: all 0.2s;
+}
+
+.dashboard-content .user-posts a:hover {
+  text-decoration: none;
+  background-color: royalblue;
+  color: white;
 }
 

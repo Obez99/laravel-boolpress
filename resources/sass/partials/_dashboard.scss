@@ -7,12 +7,26 @@
   border-radius: 20px;
   margin-left:200px;
   margin-top:50px;
+  overflow: auto;
 
   form{
     .form-group{
       textarea{
         height: 200px;
         resize: none;
+      }
+    }
+  }
+
+  .user-posts{
+    a{
+      color:unset;
+      transition: all 0.2s;
+
+      &:hover{
+      text-decoration: none;
+      background-color: royalblue;
+      color:white;
       }
     }
   }
