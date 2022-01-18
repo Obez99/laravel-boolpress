@@ -1,13 +1,20 @@
 <template>
-  <div>
-    <h1>Testo di prova per Vue.js!</h1>
+  <div id="root">
+    <Jumbotron></Jumbotron>
   </div>
 </template>
 
+
 <script>
+import Jumbotron from "../components/Jumbotron.vue";
 export default {
   name: "app",
-  components: {},
+  components: { Jumbotron },
 };
 </script>
 
+<style lang="scss">
+#root {
+  width: 100%;
+}
+</style>
