@@ -17,7 +17,7 @@ class PostsController extends Controller
     public function index()
     {
         $posts = Post::all()->where("author", Auth::user()->name);
-        return view("admin.home", compact("posts"));
+        return view("admin.index", compact("posts"));
     }
 
     /**
@@ -54,6 +54,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
+        return view("admin.show", compact("post"));
     }
 
     /**

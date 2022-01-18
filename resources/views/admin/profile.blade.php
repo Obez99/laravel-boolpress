@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+<h2>Il tuo profilo</h2>
   <ul class="list-group">
     <li class="list-group-item"><strong>Nome: </strong>{{Auth::user()->name}}</li>
     <li class="list-group-item"><strong>Email: </strong>{{Auth::user()->email}}</li>

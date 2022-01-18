@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1>Crea nuovo post</h1>
+    <h2>Crea nuovo post</h2>
 
     <form action="{{route('admin.posts.store')}}" method="post">
       @csrf
