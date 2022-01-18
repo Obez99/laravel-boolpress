@@ -131,6 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   props: ["title", "description", "author", "creationDate"]
@@ -1488,13 +1489,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card text-center my-3" }, [
-    _c("div", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.author))]),
+    _c("div", { staticClass: "card-header text-left" }, [
+      _vm._v(_vm._s(_vm.title)),
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("h3", { staticClass: "card-title mx-auto" }, [
-        _vm._v(_vm._s(_vm.title)),
-      ]),
-      _vm._v(" "),
       _c("p", { staticClass: "card-text text-left" }, [
         _vm._v(_vm._s(_vm.description)),
       ]),
@@ -1505,7 +1504,8 @@ var render = function () {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-footer text-muted" }, [
-      _vm._v("Pubblicato il " + _vm._s(_vm.creationDate)),
+      _vm._v("\n    Pubblicato il " + _vm._s(_vm.creationDate) + " da "),
+      _c("strong", [_vm._v(_vm._s(_vm.author))]),
     ]),
   ])
 }
