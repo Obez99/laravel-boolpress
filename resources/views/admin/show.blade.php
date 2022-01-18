@@ -8,10 +8,10 @@
 
       <div class="mt-4 d-flex">
         <a class="btn btn-success" href="{{route("admin.posts.edit", $post->id)}}">Modifica</a>
-        <form action="{{route("admin.posts.destroy", $post->id)}}" method="post">
+        <form action="{{route("admin.posts.destroy", $post->id)}}" method="post" class="form-delete">
           @csrf
           @method("DELETE")
-          <input type="submit" value="Cancella" class="btn btn-danger ml-3">
+          <input type="submit" value="Cancella post" class="btn btn-danger ml-3">
         </form>
         
       </div>

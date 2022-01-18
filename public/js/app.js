@@ -37270,6 +37270,15 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+window.addEventListener("DOMContentLoaded", function () {
+  $formToDelete = document.querySelector(".form-delete");
+  $formToDelete.addEventListener("submit", function (e) {
+    if (!confirm("Sicuro di voler eliminare questo post? L'operazione sarà irreversibile.")) {
+      e.preventDefault();
+    }
+  });
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

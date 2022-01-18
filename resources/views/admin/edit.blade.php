@@ -18,6 +18,6 @@
 
   <input type="hidden" name="author" value="{{Auth::user()->name}}">
   <input class="btn btn-success mt-5" type="submit" value="Modifica post">
-  <input class="btn btn-danger mt-5" type="reset" value="Cancella">
+  <input class="btn btn-danger mt-5" type="reset" value="Reset">
 </form>
 @endsection
