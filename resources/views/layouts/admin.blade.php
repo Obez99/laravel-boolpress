@@ -72,7 +72,7 @@
             </div>
         </nav>
 
-        <main class="d-flex">
+        <main class="d-flex admin-main">
             <aside>
                 <ul class="list-group mx-5 ">
                     <li class="list-group-item"><a href="{{route("admin.home")}}">Profilo</a></li>

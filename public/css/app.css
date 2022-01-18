@@ -11061,7 +11061,7 @@ aside ul .list-group-item a:hover:after {
   background-color: white;
 }
 
-main {
+.admin-main {
   background-image: url(/images/34714751.jpg?1b3681f24f189acc0d44f12a11d92867);
   background-size: cover;
   background-position: 0 -200px;
