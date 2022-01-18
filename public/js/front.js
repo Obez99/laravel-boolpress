@@ -166,6 +166,18 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Jumbotron: _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Post: _components_Post_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      posts: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    window.axios.get("/api/posts").then(function (resp) {
+      _this.posts = resp.data;
+    });
   }
 });
 

@@ -16,6 +16,16 @@ import Post from "../components/Post.vue";
 export default {
   name: "app",
   components: { Jumbotron, Post },
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  mounted() {
+    window.axios.get("/api/posts").then((resp) => {
+      this.posts = resp.data;
+    });
+  },
 };
 </script>
 
