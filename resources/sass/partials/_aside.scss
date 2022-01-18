@@ -1,8 +1,7 @@
 aside{
   height: calc(100vh - 55px);
   width: 300px;
-  background: rgb(131,124,246);
-  background: linear-gradient(180deg, rgba(131,124,246,1) 0%, rgba(92,84,241,1) 100%);
+  background: linear-gradient(0deg, rgba(198,208,238,1) 0%, rgba(26,65,110,1) 100%);
   padding: 20px 0;
 
   ul{
@@ -21,10 +20,25 @@ aside{
         color:white;
         border-bottom: 2px solid transparent;
         transition:border 0.3s;
+        position: relative;
+
+        &:after{
+          content:"";
+          width:0;
+          height:2px;
+          background: linear-gradient(90deg, rgba(198,208,238,1) 0%, rgba(123,142,176,1) 100%);
+          position: absolute;
+          bottom:0;
+          left:0;
+          transition: width 0.2s;
+        }
 
         &:hover{
-          border-bottom: 2px solid #c550f2;
           text-decoration: none;
+        }
+
+        &:hover:after{
+          width:100%;
         }
       }
     }

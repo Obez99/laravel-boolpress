@@ -10965,8 +10965,7 @@ a.text-dark:focus {
 aside {
   height: calc(100vh - 55px);
   width: 300px;
-  background: #837cf6;
-  background: linear-gradient(180deg, #837cf6 0%, #5c54f1 100%);
+  background: linear-gradient(0deg, #c6d0ee 0%, #1a416e 100%);
   padding: 20px 0;
 }
 
@@ -10986,28 +10985,49 @@ aside ul .list-group-item a {
   color: white;
   border-bottom: 2px solid transparent;
   transition: border 0.3s;
+  position: relative;
+}
+
+aside ul .list-group-item a:after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c6d0ee 0%, #7b8eb0 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition: width 0.2s;
 }
 
 aside ul .list-group-item a:hover {
-  border-bottom: 2px solid #c550f2;
   text-decoration: none;
 }
 
+aside ul .list-group-item a:hover:after {
+  width: 100%;
+}
+
 .dashboard-content {
-  width: 50%;
-  height: 500px;
+  width: 1200px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
   border: 1px solid lightgray;
   background-color: lightgray;
   box-shadow: 1px 1px 10px lightgray;
   border-radius: 20px;
   margin-left: 200px;
   margin-top: 50px;
-  overflow: auto;
 }
 
 .dashboard-content form .form-group textarea {
   height: 200px;
   resize: none;
+}
+
+.dashboard-content .user-posts {
+  height: 400px;
+  overflow: auto;
 }
 
 .dashboard-content .user-posts a {
@@ -11039,5 +11059,11 @@ aside ul .list-group-item a:hover {
   padding: 10px;
   font-size: 23px;
   background-color: white;
+}
+
+main {
+  background-image: url(/images/34714751.jpg?1b3681f24f189acc0d44f12a11d92867);
+  background-size: cover;
+  background-position: 0 -200px;
 }
 

@@ -1,13 +1,12 @@
 .dashboard-content{
-  width:50%;
-  height: 500px;
+  width:1200px;
+  height: min-content;
   border:1px solid lightgray;
   background-color:lightgray;
   box-shadow:1px 1px 10px lightgray;
   border-radius: 20px;
   margin-left:200px;
   margin-top:50px;
-  overflow: auto;
 
   form{
     .form-group{
@@ -19,6 +18,8 @@
   }
 
   .user-posts{
+    height:400px;
+    overflow: auto;
     a{
       color:unset;
       transition: all 0.2s;
