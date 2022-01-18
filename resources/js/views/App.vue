@@ -2,8 +2,15 @@
   <div id="root">
     <Jumbotron></Jumbotron>
 
-    <div class="posts-container">
-      <Post></Post>
+    <div class="container">
+      <Post
+        v-for="post in posts"
+        :key="post.id"
+        :title="post.title"
+        :description="post.content"
+        :author="post.author"
+        :creationDate="post.created_at"
+      ></Post>
     </div>
   </div>
 </template>
@@ -23,7 +30,11 @@ export default {
   },
   mounted() {
     window.axios.get("/api/posts").then((resp) => {
-      this.posts = resp.data;
+      let response = resp.data.reverse();
+      response.forEach((item) => {
+        item.created_at = item.created_at.substring(0, 10);
+        this.posts.push(item);
+      });
     });
   },
 };

@@ -132,7 +132,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Post"
+  name: "Post",
+  props: ["title", "description", "author", "creationDate"]
 });
 
 /***/ }),
@@ -148,6 +149,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
 /* harmony import */ var _components_Post_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Post.vue */ "./resources/js/components/Post.vue");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -176,7 +184,12 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     window.axios.get("/api/posts").then(function (resp) {
-      _this.posts = resp.data;
+      var response = resp.data.reverse();
+      response.forEach(function (item) {
+        item.created_at = item.created_at.substring(0, 10);
+
+        _this.posts.push(item);
+      });
     });
   }
 });
@@ -215,7 +228,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".card .card-header {\n  font-size: 30px;\n}\n.card .card-title {\n  font-size: 30px;\n  max-width: 300px;\n}\n.card .card-text {\n  font-size: 25px;\n  margin-bottom: 30px;\n}", ""]);
 
 // exports
 
@@ -1474,34 +1487,29 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "card text-center my-3" }, [
+    _c("div", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.author))]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h3", { staticClass: "card-title mx-auto" }, [
+        _vm._v(_vm._s(_vm.title)),
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text text-left" }, [
+        _vm._v(_vm._s(_vm.description)),
+      ]),
+      _vm._v(" "),
+      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+        _vm._v("Vedi post"),
+      ]),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-footer text-muted" }, [
+      _vm._v("Pubblicato il " + _vm._s(_vm.creationDate)),
+    ]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card text-center" }, [
-      _c("div", { staticClass: "card-header" }, [_vm._v("Giulio")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [
-          _vm._v("Special title treatment"),
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-          _vm._v("Vedi post"),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-footer text-muted" }, [
-        _vm._v("2 days ago"),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -1529,7 +1537,22 @@ var render = function () {
     [
       _c("Jumbotron"),
       _vm._v(" "),
-      _c("div", { staticClass: "posts-container" }, [_c("Post")], 1),
+      _c(
+        "div",
+        { staticClass: "container" },
+        _vm._l(_vm.posts, function (post) {
+          return _c("Post", {
+            key: post.id,
+            attrs: {
+              title: post.title,
+              description: post.content,
+              author: post.author,
+              creationDate: post.created_at,
+            },
+          })
+        }),
+        1
+      ),
     ],
     1
   )
