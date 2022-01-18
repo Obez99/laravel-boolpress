@@ -75,7 +75,7 @@
         <main class="d-flex">
             <aside>
                 <ul class="list-group mx-5 ">
-                    <li class="list-group-item"><a href="#">Profilo</a></li>
+                    <li class="list-group-item"><a href="{{route("admin.home")}}">Profilo</a></li>
                     <li class="list-group-item"><a href="{{route('admin.posts.create')}}">Nuovo Post</a></li>
                 </ul>
               </aside>
