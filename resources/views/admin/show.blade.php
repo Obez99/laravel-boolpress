@@ -7,7 +7,7 @@
       <div></div>
 
       <div class="mt-4 d-flex">
-        <a class="btn btn-success" href="">Modifica</a>
+        <a class="btn btn-success" href="{{route("admin.posts.edit", $post->id)}}">Modifica</a>
         <form action="{{route("admin.posts.destroy", $post->id)}}" method="post">
           @csrf
           @method("DELETE")
