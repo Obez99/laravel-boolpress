@@ -37268,15 +37268,20 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+var _require = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js"),
+    remove = _require.remove;
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.addEventListener("DOMContentLoaded", function () {
-  $formToDelete = document.querySelector(".form-delete");
-  $formToDelete.addEventListener("submit", function (e) {
-    if (!confirm("Sicuro di voler eliminare questo post? L'operazione sarà irreversibile.")) {
-      e.preventDefault();
-    }
-  });
+  if (document.querySelector(".form-delete")) {
+    $formToDelete = document.querySelector(".form-delete");
+    $formToDelete.addEventListener("submit", function (e) {
+      if (!confirm("Sicuro di voler eliminare questo post? L'operazione sarà irreversibile.")) {
+        e.preventDefault();
+      }
+    });
+  }
 });
 
 /***/ }),

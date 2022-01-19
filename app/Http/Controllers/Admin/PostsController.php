@@ -48,7 +48,7 @@ class PostsController extends Controller
         $newPost->fill($data);
         $newPost->save();
 
-        return redirect()->route("admin.posts.index");
+        return redirect()->route("admin.posts.index")->with("msg", "Post creato correttamente!");
     }
 
     /**
