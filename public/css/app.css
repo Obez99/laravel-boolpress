@@ -11050,23 +11050,6 @@ aside ul .list-group-item a:hover:after {
   color: white;
 }
 
-.dashboard-content .post-viewer .post-title {
-  padding: 10px;
-  color: white;
-  text-align: center;
-}
-
-.dashboard-content .post-viewer .post-description {
-  height: 300px;
-  box-shadow: 1px 1px 10px gray;
-  border-radius: 10px;
-  overflow: auto;
-  margin-top: 30px;
-  padding: 10px;
-  font-size: 23px;
-  background-color: white;
-}
-
 .admin-main {
   background-image: url(/images/34714751.jpg?1b3681f24f189acc0d44f12a11d92867);
   background-size: cover;

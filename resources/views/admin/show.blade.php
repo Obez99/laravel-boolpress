@@ -1,10 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="post-viewer">
-      <h2 class="post-title">{{$post->title}}</h2>
-      <div class="post-description">{{$post->content}}</div>
-      <div></div>
+<div class="card text-center my-3">
+  <strong class="card-header text-left">{{ $post->title }}</strong>
+  <div class="card-body">
+    <p class="card-text text-left">{{ $post->content }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    Pubblicato il {{ $post->created_at }}
+  </div>
+</div>
 
       <div class="mt-4 d-flex">
         <a class="btn btn-success" href="{{route("admin.posts.edit", $post->id)}}">Modifica</a>
