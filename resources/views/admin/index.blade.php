@@ -4,7 +4,7 @@
 @if(count($posts)>0)
   @if(session("msg"))
   <div class="alert alert-success d-flex justify-content-between" role="alert">{{session("msg")}} 
-    <button type="button" class="close" aria-label="Close">
+    <button type="button" class="close" aria-label="Close" id="closeBtn">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>

@@ -37275,11 +37275,18 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.addEventListener("DOMContentLoaded", function () {
   if (document.querySelector(".form-delete")) {
-    $formToDelete = document.querySelector(".form-delete");
-    $formToDelete.addEventListener("submit", function (e) {
+    formToDelete = document.querySelector(".form-delete");
+    formToDelete.addEventListener("submit", function (e) {
       if (!confirm("Sicuro di voler eliminare questo post? L'operazione sarà irreversibile.")) {
         e.preventDefault();
       }
+    });
+  }
+
+  if (document.querySelector(".alert-success")) {
+    closeBtn = document.getElementById("closeBtn");
+    closeBtn.addEventListener("click", function () {
+      document.querySelector(".alert-success").outerHTML = "";
     });
   }
 });
