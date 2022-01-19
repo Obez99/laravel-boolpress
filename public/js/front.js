@@ -168,6 +168,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -248,7 +252,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#root {\n  width: 100%;\n}", ""]);
+exports.push([module.i, "#root {\n  width: 100%;\n}\n#root .posts-section {\n  min-height: 210px;\n  background-color: lightgray;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}", ""]);
 
 // exports
 
@@ -1537,22 +1541,34 @@ var render = function () {
     [
       _c("Jumbotron"),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "container" },
-        _vm._l(_vm.posts, function (post) {
-          return _c("Post", {
-            key: post.id,
-            attrs: {
-              title: post.title,
-              description: post.content,
-              author: post.author,
-              creationDate: post.created_at,
-            },
-          })
-        }),
-        1
-      ),
+      _c("div", { staticClass: "posts-section" }, [
+        _c(
+          "div",
+          { staticClass: "container" },
+          [
+            _vm._l(_vm.posts, function (post) {
+              return _c("Post", {
+                key: post.id,
+                attrs: {
+                  title: post.title,
+                  description: post.content,
+                  author: post.author,
+                  creationDate: post.created_at,
+                },
+              })
+            }),
+            _vm._v(" "),
+            _vm.posts.length === 0
+              ? _c("h2", { staticClass: "text-center" }, [
+                  _vm._v(
+                    "\n        Nessun post disponibile, torna più tardi!\n      "
+                  ),
+                ])
+              : _vm._e(),
+          ],
+          2
+        ),
+      ]),
     ],
     1
   )
