@@ -7,7 +7,10 @@
     <p class="card-text text-left">{{ $post->content }}</p>
   </div>
   <div class="card-footer text-muted">
-    Pubblicato il {{ $post->created_at }}
+    <span>Pubblicato il {{ $post->created_at }}</span>
+    @if($post->created_at != $post->updated_at)
+    <span class="ml-5">Modificato il {{$post->updated_at}}</span>
+    @endif
   </div>
 </div>
 
