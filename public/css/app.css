@@ -11051,10 +11051,7 @@ aside ul .list-group-item a:hover:after {
 }
 
 .dashboard-content .post-viewer .post-title {
-  background-color: #6574cd;
-  border-radius: 10px;
   padding: 10px;
-  box-shadow: 1px 1px 10px gray;
   color: white;
   text-align: center;
 }
