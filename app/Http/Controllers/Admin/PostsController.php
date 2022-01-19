@@ -85,7 +85,7 @@ class PostsController extends Controller
         $editedPost = $request->all();
         $post->update($editedPost);
 
-        return redirect()->route("admin.posts.index");
+        return redirect()->route("admin.posts.index")->with("msg", "Post modificato correttamente!");
     }
 
     /**

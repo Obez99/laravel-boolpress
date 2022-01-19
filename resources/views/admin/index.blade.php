@@ -3,7 +3,7 @@
 @section('content')
 @if(count($posts)>0)
   @if(session("msg"))
-  <div class="alert alert-success d-flex justify-content-between" role="alert">Post creato correttamente! <button id="closeBtn">x</button></div>
+  <div class="alert alert-success d-flex justify-content-between" role="alert">{{session("msg")}}</div>
   @endif
   <h2>I tuoi post</h2>
   <ul class="list-group user-posts">
