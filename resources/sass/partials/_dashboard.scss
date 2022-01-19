@@ -2,11 +2,19 @@
   width:1200px;
   height: min-content;
   border:1px solid lightgray;
-  background-color:lightgray;
-  box-shadow:1px 1px 10px lightgray;
+  background: linear-gradient(0deg, rgba(104,143,182,1) 0%, rgba(8,29,50,1) 100%);
   border-radius: 20px;
   margin-left:200px;
   margin-top:50px;
+
+  h2{
+    margin-bottom: 35px;
+    text-align: center;
+  }
+
+  h2,label{
+    color:white;
+  }
 
   form{
     .form-group{

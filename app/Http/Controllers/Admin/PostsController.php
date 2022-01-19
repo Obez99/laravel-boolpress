@@ -82,6 +82,11 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'title' => 'required|max:50',
+            'content' => 'required|max:1000',
+        ]);
+
         $editedPost = $request->all();
         $post->update($editedPost);
 

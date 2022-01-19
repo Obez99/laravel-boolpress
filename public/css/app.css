@@ -11013,11 +11013,20 @@ aside ul .list-group-item a:hover:after {
   height: -moz-min-content;
   height: min-content;
   border: 1px solid lightgray;
-  background-color: lightgray;
-  box-shadow: 1px 1px 10px lightgray;
+  background: linear-gradient(0deg, #688fb6 0%, #081d32 100%);
   border-radius: 20px;
   margin-left: 200px;
   margin-top: 50px;
+}
+
+.dashboard-content h2 {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.dashboard-content h2,
+.dashboard-content label {
+  color: white;
 }
 
 .dashboard-content form .form-group textarea {

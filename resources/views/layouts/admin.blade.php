@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
@@ -75,9 +76,9 @@
         <main class="d-flex admin-main">
             <aside>
                 <ul class="list-group mx-5 ">
-                    <li class="list-group-item"><a href="{{route("admin.home")}}">Profilo</a></li>
-                    <li class="list-group-item"><a href="{{route('admin.posts.index')}}">I tuoi Post</a></li>
-                    <li class="list-group-item"><a href="{{route('admin.posts.create')}}">Nuovo Post</a></li>
+                    <li class="list-group-item"><a href="{{route("admin.home")}}"><i class="fas fa-user mr-3"></i>Profilo</a></li>
+                    <li class="list-group-item"><a href="{{route('admin.posts.index')}}"><i class="fas fa-clipboard mr-3"></i>I tuoi Post</a></li>
+                    <li class="list-group-item"><a href="{{route('admin.posts.create')}}"><i class="fas fa-pencil-alt mr-3"></i>Nuovo Post</a></li>
                 </ul>
               </aside>
               <div class="dashboard-content p-3">

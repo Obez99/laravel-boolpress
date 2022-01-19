@@ -20,4 +20,14 @@
   <input class="btn btn-success mt-5" type="submit" value="Modifica post">
   <input class="btn btn-danger mt-5" type="reset" value="Reset">
 </form>
+
+@if($errors->any())
+    <div class="alert alert-danger mt-3" role="alert">
+      <ul>
+      @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+      </ul>
+    </div>
+    @endif
 @endsection
