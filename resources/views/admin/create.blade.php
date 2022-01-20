@@ -15,6 +15,12 @@
         <textarea type="text" class="form-control" id="formGroupExampleInput2" placeholder="Scrivi qualcosa..." name="content"></textarea>
       </div>
 
+      <select class="form-control" name="category_id">
+        <option disabled selected>Scegli una categoria...</option>
+        @foreach($categories as $category)
+          <option value="{{$category->id}}">{{$category->name}}</option>
+        @endforeach
+      </select>
       <input class="btn btn-primary mt-5" type="submit" value="Crea nuovo post">
       <input class="btn btn-danger mt-5" type="reset" value="Reset">
     </form>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
+use App\Post;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Post;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -27,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("admin.create");
+        $categories = Category::all();
+        return view("admin.create", compact("categories"));
     }
 
     /**
@@ -41,6 +43,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:50',
             'content' => 'required|max:1000',
+            'category_id' => 'required'
         ]);
 
         $newPost = new Post;
@@ -70,7 +73,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view("admin.edit", compact("post"));
+        $categories = Category::all();
+        return view("admin.edit", compact("post", "categories"));
     }
 
     /**
