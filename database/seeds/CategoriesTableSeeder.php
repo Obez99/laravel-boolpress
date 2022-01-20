@@ -19,7 +19,7 @@ class CategoriesTableSeeder extends Seeder
             ],
             [
                 "name" => "Musica",
-                "color" => "##a503fc"
+                "color" => "#a503fc"
             ],
             [
                 "name" => "Informatica",

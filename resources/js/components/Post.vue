@@ -1,9 +1,14 @@
 <template>
-  <div class="card text-center my-3">
-    <div class="card-header text-left">{{ title }}</div>
+  <div class="card my-3">
+    <div class="card-header">{{ title }}</div>
     <div class="card-body">
-      <p class="card-text text-left">{{ description }}</p>
-      <a href="#" class="btn btn-primary">Vedi post</a>
+      <p class="card-text">{{ description }}</p>
+      <div
+        class="category-label"
+        :style="{ 'background-color': category.color }"
+      >
+        {{ category.name }}
+      </div>
     </div>
     <div class="card-footer text-muted">
       Pubblicato il {{ creationDate }} da <strong>{{ author }}</strong>
@@ -14,7 +19,7 @@
 <script>
 export default {
   name: "Post",
-  props: ["title", "description", "author", "creationDate"],
+  props: ["title", "description", "author", "creationDate", "category"],
 };
 </script>
 

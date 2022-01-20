@@ -8,7 +8,8 @@
           :key="post.id"
           :title="post.title"
           :description="post.content"
-          :author="post.author"
+          :author="post.user.name"
+          :category="post.category"
           :creationDate="post.created_at"
         ></Post>
         <h2 v-if="posts.length === 0" class="text-center">

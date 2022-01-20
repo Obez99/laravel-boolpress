@@ -132,9 +132,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
-  props: ["title", "description", "author", "creationDate"]
+  props: ["title", "description", "author", "creationDate", "category"]
 });
 
 /***/ }),
@@ -150,6 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
 /* harmony import */ var _components_Post_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Post.vue */ "./resources/js/components/Post.vue");
+//
 //
 //
 //
@@ -233,7 +239,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card .card-header {\n  font-size: 30px;\n}\n.card .card-title {\n  font-size: 30px;\n  max-width: 300px;\n}\n.card .card-text {\n  font-size: 25px;\n  margin-bottom: 30px;\n}", ""]);
+exports.push([module.i, ".card .card-header {\n  font-size: 30px;\n}\n.card .card-title {\n  font-size: 30px;\n  max-width: 300px;\n}\n.card .card-body .category-label {\n  display: inline-block;\n  padding: 7px 10px;\n  font-weight: bold;\n  color: white;\n  border-radius: 20px;\n}\n.card .card-text {\n  font-size: 25px;\n  margin-bottom: 30px;\n}", ""]);
 
 // exports
 
@@ -1492,19 +1498,20 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card text-center my-3" }, [
-    _c("div", { staticClass: "card-header text-left" }, [
-      _vm._v(_vm._s(_vm.title)),
-    ]),
+  return _c("div", { staticClass: "card my-3" }, [
+    _c("div", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.title))]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
-      _c("p", { staticClass: "card-text text-left" }, [
-        _vm._v(_vm._s(_vm.description)),
-      ]),
+      _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.description))]),
       _vm._v(" "),
-      _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-        _vm._v("Vedi post"),
-      ]),
+      _c(
+        "div",
+        {
+          staticClass: "category-label",
+          style: { "background-color": _vm.category.color },
+        },
+        [_vm._v("\n      " + _vm._s(_vm.category.name) + "\n    ")]
+      ),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-footer text-muted" }, [
@@ -1552,7 +1559,8 @@ var render = function () {
                 attrs: {
                   title: post.title,
                   description: post.content,
-                  author: post.author,
+                  author: post.user.name,
+                  category: post.category,
                   creationDate: post.created_at,
                 },
               })
