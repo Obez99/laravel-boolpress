@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->where("author", Auth::user()->name);
+        $posts = Post::all()->where("user_id", Auth::user()->id);
         return view("admin.index", compact("posts"));
     }
 
@@ -43,9 +43,9 @@ class PostController extends Controller
             'content' => 'required|max:1000',
         ]);
 
-        $data = $request->all();
         $newPost = new Post;
-        $newPost->fill($data);
+        $newPost->fill($request->all());
+        $newPost->user_id = Auth::user()->id;
         $newPost->save();
 
         return redirect()->route("admin.posts.index")->with("msg", "Post creato correttamente!");
