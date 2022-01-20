@@ -15,7 +15,6 @@
         <textarea type="text" class="form-control" id="formGroupExampleInput2" placeholder="Scrivi qualcosa..." name="content"></textarea>
       </div>
 
-      <input type="hidden" name="author" value="{{Auth::user()->name}}">
       <input class="btn btn-primary mt-5" type="submit" value="Crea nuovo post">
       <input class="btn btn-danger mt-5" type="reset" value="Reset">
     </form>
