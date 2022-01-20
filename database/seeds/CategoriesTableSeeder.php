@@ -12,11 +12,33 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categoriesList = ["Cucina", "Musica", "Informatica", "Notizie", "Attualità"];
+        $categoriesList = [
+            [
+                "name" => "Cucina",
+                "color" => "#fcba03"
+            ],
+            [
+                "name" => "Musica",
+                "color" => "##a503fc"
+            ],
+            [
+                "name" => "Informatica",
+                "color" => "#2c2933"
+            ],
+            [
+                "name" => "Notizie",
+                "color" => "#c2235d"
+            ],
+            [
+                "name" => "Attualità",
+                "color" => "#3167bd"
+            ],
+        ];
 
         foreach ($categoriesList as $category) {
             $newCategory = new Category();
-            $newCategory->name = $category;
+            $newCategory->name = $category["name"];
+            $newCategory->color = $category["color"];
             $newCategory->save();
         }
     }
