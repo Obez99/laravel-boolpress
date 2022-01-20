@@ -4,11 +4,6 @@
     font-size: 30px;
   }
 
-  .card-title{
-    font-size: 30px;
-    max-width: 300px;
-  }
-
   .card-body{
     .category-label{
       display: inline-block;
@@ -17,10 +12,10 @@
       color:white;
       border-radius: 20px;
     }
+    .card-text{
+      font-size:25px;
+      margin-bottom: 30px;
+    }
+  }
   }
 
-  .card-text{
-    font-size:25px;
-    margin-bottom: 30px;
-  }
-}

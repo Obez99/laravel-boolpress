@@ -1,10 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="card text-center my-3">
-  <strong class="card-header text-left">{{ $post->title }}</strong>
+<div class="card my-3">
+  <strong class="card-header">{{ $post->title }}</strong>
   <div class="card-body">
-    <p class="card-text text-left">{{ $post->content }}</p>
+    <p class="card-text">{{ $post->content }}</p>
+    <div class="category-label d-inline-block text-light p-2 rounded" style="background-color:{{$post->category->color}}">{{$post->category->name}}</div>
   </div>
   <div class="card-footer text-muted">
     <span>Pubblicato il {{ $post->created_at }}</span>

@@ -239,7 +239,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card .card-header {\n  font-size: 30px;\n}\n.card .card-title {\n  font-size: 30px;\n  max-width: 300px;\n}\n.card .card-body .category-label {\n  display: inline-block;\n  padding: 7px 10px;\n  font-weight: bold;\n  color: white;\n  border-radius: 20px;\n}\n.card .card-text {\n  font-size: 25px;\n  margin-bottom: 30px;\n}", ""]);
+exports.push([module.i, ".card .card-header {\n  font-size: 30px;\n}\n.card .card-body .category-label {\n  display: inline-block;\n  padding: 7px 10px;\n  font-weight: bold;\n  color: white;\n  border-radius: 20px;\n}\n.card .card-body .card-text {\n  font-size: 25px;\n  margin-bottom: 30px;\n}", ""]);
 
 // exports
 
