@@ -15,12 +15,22 @@
         <textarea type="text" class="form-control" id="formGroupExampleInput2" placeholder="Scrivi qualcosa..." name="content"></textarea>
       </div>
 
+      <label>Categoria</label>
       <select class="form-control" name="category_id">
         <option disabled selected>Scegli una categoria...</option>
         @foreach($categories as $category)
           <option value="{{$category->id}}">{{$category->name}}</option>
         @endforeach
       </select>
+
+      <label class="mt-3 d-block">Tags</label>
+      <fieldset class="form-control">
+        @foreach ($tags as $tag)
+        <input type="checkbox" name="tags[]" value="{{$tag->id}}">
+        <label class="text-dark mr-3">{{$tag->name}}</label>
+        @endforeach
+      </fieldset>
+        
       <input class="btn btn-primary mt-5" type="submit" value="Crea nuovo post">
       <input class="btn btn-danger mt-5" type="reset" value="Reset">
     </form>

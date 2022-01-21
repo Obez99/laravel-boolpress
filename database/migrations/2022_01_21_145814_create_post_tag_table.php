@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTagPostTable extends Migration
+class CreatePostTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateTagPostTable extends Migration
      */
     public function up()
     {
-        Schema::create('tag_post', function (Blueprint $table) {
+        Schema::create('post_tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("tag_id")->constrained();
             $table->foreignId("post_id")->constrained();
+            $table->foreignId("tag_id")->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTagPostTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tag_post');
+        Schema::dropIfExists('post_tag');
     }
 }

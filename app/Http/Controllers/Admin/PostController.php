@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,8 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view("admin.create", compact("categories"));
+        $tags = Tag::all();
+        return view("admin.create", compact("categories", "tags"));
     }
 
     /**
@@ -46,10 +48,12 @@ class PostController extends Controller
             'category_id' => 'required'
         ]);
 
+        $data = $request->all();
         $newPost = new Post;
-        $newPost->fill($request->all());
+        $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->save();
+        $newPost->tags()->sync($data["tags"]);
 
         return redirect()->route("admin.posts.index")->with("msg", "Post creato correttamente!");
     }
@@ -74,7 +78,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view("admin.edit", compact("post", "categories"));
+        $tags = Tag::all();
+        return view("admin.edit", compact("post", "categories", "tags"));
     }
 
     /**
