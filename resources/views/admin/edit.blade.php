@@ -24,14 +24,13 @@
   </select>
 
   <label class="mt-3 d-block">Tags</label>
-  <div>
-    @foreach ($tags as $tag)
-    <div class="form-check form-check-inline mr-3">
-      <input class="form-check-input" type="checkbox" value="{{$tag->name}}">
-      <label class="form-check-label">{{$tag->name}}</label>
-    </div>
-    @endforeach
-  </div>
+    <fieldset class="form-control">
+      {{-- @dump($post->tags) --}}
+      @foreach ($tags as $tag)
+      <input type="checkbox" name="tags[]" value="{{$tag->id}}" {{$post->tags->contains($tag) ? 'checked' : ''}}>
+      <label class="text-dark mr-3">{{$tag->name}}</label>
+      @endforeach
+    </fieldset>
   
 
   <input class="btn btn-success mt-5" type="submit" value="Modifica post">

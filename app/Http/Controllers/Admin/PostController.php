@@ -98,8 +98,9 @@ class PostController extends Controller
 
         $editedPost = $request->all();
         $post->update($editedPost);
+        $post->tags()->sync($editedPost["tags"]);
 
-        return redirect()->route("admin.posts.index")->with("msg", "Post modificato correttamente!");
+        return redirect()->route("admin.posts.show", $post)->with("msg", "Post modificato correttamente!");
     }
 
     /**

@@ -2,10 +2,14 @@
 
 @section('content')
 <div class="card my-3">
-  <strong class="card-header">{{ $post->title }}</strong>
+  <strong class="card-header d-flex justify-content-between align-items-center">{{ $post->title }} <div class="category-label d-inline-block text-light p-2 rounded" style="background-color:{{$post->category->color}}">{{$post->category->name}}</div></strong>
   <div class="card-body">
     <p class="card-text">{{ $post->content }}</p>
-    <div class="category-label d-inline-block text-light p-2 rounded" style="background-color:{{$post->category->color}}">{{$post->category->name}}</div>
+    <div class="mt-3">
+      @foreach($post->tags as $tag)
+      <span class="badge badge-pill text-white p-1" style="background-color:{{$tag->color}}">{{$tag->name}}</span>
+      @endforeach
+    </div>
   </div>
   <div class="card-footer text-muted">
     <span>Pubblicato il {{ $post->created_at }}</span>
