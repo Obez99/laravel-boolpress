@@ -101,7 +101,13 @@ class PostController extends Controller
 
         $editedPost = $request->all();
         $post->update($editedPost);
-        $post->tags()->sync($editedPost["tags"]);
+
+        if (isset($editedPost["tags"])) {
+            $post->tags()->sync($editedPost["tags"]);
+        } else {
+            $post->tags()->detach();
+        }
+
 
         return redirect()->route("admin.posts.show", $post)->with("msg", "Post modificato correttamente!");
     }
