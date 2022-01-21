@@ -137,9 +137,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
-  props: ["title", "description", "author", "creationDate", "category"]
+  props: ["title", "description", "author", "creationDate", "category", "tags"]
 });
 
 /***/ }),
@@ -155,6 +168,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
 /* harmony import */ var _components_Post_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Post.vue */ "./resources/js/components/Post.vue");
+//
 //
 //
 //
@@ -239,7 +253,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card .card-header {\n  font-size: 30px;\n}\n.card .card-body .category-label {\n  display: inline-block;\n  padding: 7px 10px;\n  font-weight: bold;\n  color: white;\n  border-radius: 20px;\n}\n.card .card-body .card-text {\n  font-size: 25px;\n  margin-bottom: 30px;\n}", ""]);
+exports.push([module.i, ".card .card-header {\n  font-size: 30px;\n}\n.card .card-body .card-text {\n  font-size: 25px;\n  margin-bottom: 30px;\n}", ""]);
 
 // exports
 
@@ -1499,18 +1513,43 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card my-3" }, [
-    _c("div", { staticClass: "card-header" }, [_vm._v(_vm._s(_vm.title))]),
+    _c(
+      "div",
+      {
+        staticClass:
+          "card-header d-flex justify-content-between align-items-center",
+      },
+      [
+        _vm._v("\n    " + _vm._s(_vm.title) + "\n    "),
+        _c(
+          "div",
+          {
+            staticClass: "badge text-white",
+            style: { "background-color": _vm.category.color },
+          },
+          [_vm._v("\n      " + _vm._s(_vm.category.name) + "\n    ")]
+        ),
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
       _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.description))]),
       _vm._v(" "),
       _c(
         "div",
-        {
-          staticClass: "category-label",
-          style: { "background-color": _vm.category.color },
-        },
-        [_vm._v("\n      " + _vm._s(_vm.category.name) + "\n    ")]
+        { staticClass: "tags-section" },
+        _vm._l(_vm.tags, function (tag) {
+          return _c(
+            "div",
+            {
+              key: tag.id,
+              staticClass: "badge badge-pill mr-3 text-white p-2",
+              style: { "background-color": tag.color },
+            },
+            [_vm._v("\n        " + _vm._s(tag.name) + "\n      ")]
+          )
+        }),
+        0
       ),
     ]),
     _vm._v(" "),
@@ -1561,6 +1600,7 @@ var render = function () {
                   description: post.content,
                   author: post.user.name,
                   category: post.category,
+                  tags: post.tags,
                   creationDate: post.created_at,
                 },
               })

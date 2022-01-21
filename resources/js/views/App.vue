@@ -10,6 +10,7 @@
           :description="post.content"
           :author="post.user.name"
           :category="post.category"
+          :tags="post.tags"
           :creationDate="post.created_at"
         ></Post>
         <h2 v-if="posts.length === 0" class="text-center">
