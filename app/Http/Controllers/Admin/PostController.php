@@ -53,7 +53,10 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->user_id = Auth::user()->id;
         $newPost->save();
-        $newPost->tags()->sync($data["tags"]);
+
+        if (isset($data["tags"])) {
+            $newPost->tags()->sync($data["tags"]);
+        }
 
         return redirect()->route("admin.posts.index")->with("msg", "Post creato correttamente!");
     }
