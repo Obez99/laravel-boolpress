@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
+@if(session("msg"))
+<div class="alert alert-success d-flex justify-content-between" role="alert">{{session("msg")}} 
+  <button type="button" class="close" aria-label="Close" id="closeBtn">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 <div class="card my-3">
   <strong class="card-header d-flex justify-content-between align-items-center">{{ $post->title }} <div class="category-label d-inline-block text-light p-2 rounded" style="background-color:{{$post->category->color}}">{{$post->category->name}}</div></strong>
   <div class="card-body">
