@@ -23,6 +23,7 @@ Route::middleware("auth")
     ->group(function () {
         Route::get("/", "HomeController@index")->name("home");
         Route::resource("posts", "PostController");
+        Route::get("comments", "CommentController@create")->name("comments.create");
     });
 
 Route::get("{any?}", function () {
