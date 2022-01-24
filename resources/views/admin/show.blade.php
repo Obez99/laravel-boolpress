@@ -26,14 +26,46 @@
   </div>
 </div>
 
-      <div class="mt-4 d-flex">
-        <a class="btn btn-success" href="{{route("admin.posts.edit", $post->id)}}">Modifica</a>
-        <form action="{{route("admin.posts.destroy", $post->id)}}" method="post" class="form-delete">
-          @csrf
-          @method("DELETE")
-          <input type="submit" value="Cancella post" class="btn btn-danger ml-3">
-        </form>
-        
+<div class="mt-4 d-flex">
+  <a class="btn btn-success" href="{{route("admin.posts.edit", $post->id)}}">Modifica</a>
+  <form action="{{route("admin.posts.destroy", $post->id)}}" method="post" class="form-delete">
+    @csrf
+    @method("DELETE")
+    <input type="submit" value="Cancella post" class="btn btn-danger ml-3">
+  </form>  
+</div>
+
+<div>
+  <h2 class="text-left mt-5">Commenti</h2>
+  @if(count($post->comments)>0)
+    @foreach($post->comments as $comment)
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{$comment->user->name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{$comment->created_at->format("d m Y, H:i")}}</h6>
+        <p class="card-text">{{$comment->content}}</p>
       </div>
     </div>
+    
+    @endforeach
+    @else
+    <p class="text-white">Ancora nessun commento</p>
+  @endif
+  <form action="{{route('admin.comments.create', $post->id)}}">
+    @csrf
+    <input type="hidden" value="{{$post->id}}" name="post_id">
+    <textarea class="w-100 form-control mt-5" name="content" cols="30" rows="3"></textarea>
+    <input type="submit" class="btn btn-success mt-4">
+  </form>
+
+  @if($errors->any())
+    <div class="alert alert-danger mt-3" role="alert">
+      <ul>
+      @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+      </ul>
+    </div>
+    @endif
+</div>
 @endsection
