@@ -39,5 +39,20 @@
       }
     }
   }
-  
+
+  .comments-section{
+    .comments-container{
+      max-height: 200px;
+      overflow: auto;
+      
+      .card{
+        background-color: rgb(228, 227, 236);
+      }
+    }
+    form{
+      textarea{
+        resize: none;
+      }
+    }
+  }
 }

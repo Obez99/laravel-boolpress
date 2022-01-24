@@ -35,11 +35,12 @@
   </form>  
 </div>
 
-<div>
+<div class="comments-section">
   <h2 class="text-left mt-5">Commenti</h2>
+  <div class="comments-container">
   @if(count($post->comments)>0)
     @foreach($post->comments as $comment)
-    <div class="card" style="width: 18rem;">
+    <div class="card mb-3 w-100" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{$comment->user->name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{$comment->created_at->format("d m Y, H:i")}}</h6>
@@ -51,10 +52,13 @@
     @else
     <p class="text-white">Ancora nessun commento</p>
   @endif
+    </div>
+
+  <h2 class="mt-5">Nuovo Commento</h2>
   <form action="{{route('admin.comments.create', $post->id)}}">
     @csrf
     <input type="hidden" value="{{$post->id}}" name="post_id">
-    <textarea class="w-100 form-control mt-5" name="content" cols="30" rows="3"></textarea>
+    <textarea class="w-100 form-control" name="content" cols="30" rows="3"></textarea>
     <input type="submit" class="btn btn-success mt-4">
   </form>
 

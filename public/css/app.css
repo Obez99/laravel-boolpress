@@ -11050,6 +11050,19 @@ aside ul .list-group-item a:hover:after {
   color: white;
 }
 
+.dashboard-content .comments-section .comments-container {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.dashboard-content .comments-section .comments-container .card {
+  background-color: #e4e3ec;
+}
+
+.dashboard-content .comments-section form textarea {
+  resize: none;
+}
+
 .admin-main {
   background-image: url(/images/34714751.jpg?1b3681f24f189acc0d44f12a11d92867);
   background-size: cover;
