@@ -45,6 +45,13 @@
         <h5 class="card-title">{{$comment->user->name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{$comment->created_at->format("d m Y, H:i")}}</h6>
         <p class="card-text">{{$comment->content}}</p>
+        @if($comment->user->id === Auth::user()->id)
+        <form action="{{route('admin.comments.destroy', $comment->id)}}" method="post">
+          @csrf
+          @method("DELETE")
+          <input type="submit" class="btn btn-danger" value="Elimina">
+        </form>
+        @endif
       </div>
     </div>
     
@@ -55,7 +62,7 @@
     </div>
 
   <h2 class="mt-5">Nuovo Commento</h2>
-  <form action="{{route('admin.comments.create', $post->id)}}">
+  <form action="{{route('admin.comments.store', $post->id)}}">
     @csrf
     <input type="hidden" value="{{$post->id}}" name="post_id">
     <textarea class="w-100 form-control" name="content" cols="30" rows="3"></textarea>
