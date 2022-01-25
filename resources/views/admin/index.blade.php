@@ -19,7 +19,9 @@
       </li>
     @endforeach
   </ul>
-
+  <div class="d-flex justify-content-center">
+    {{$posts->links()}}
+  </div>
   @else
   <h2>Nessun post disponibile, creane uno!</h2>
   <a class="btn btn-primary mt-3" href="{{route('admin.posts.create')}}">Crea nuovo post</a>
