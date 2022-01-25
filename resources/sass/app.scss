@@ -18,4 +18,6 @@
   background-image: url("../../public/img/34714751.jpg");
   background-size: cover;
   background-position: 0 -200px;
+  height: calc(100vh - 55px);
+  overflow: hidden;
 }

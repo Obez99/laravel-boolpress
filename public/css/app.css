@@ -10963,7 +10963,7 @@ a.text-dark:focus {
 }
 
 aside {
-  height: calc(100vh - 55px);
+  height: 100%;
   width: 300px;
   background: linear-gradient(0deg, #c6d0ee 0%, #1a416e 100%);
   padding: 20px 0;
@@ -11012,7 +11012,6 @@ aside ul .list-group-item a:hover:after {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
-  border: 1px solid lightgray;
   background: linear-gradient(0deg, #688fb6 0%, #081d32 100%);
   border-radius: 20px;
   margin-left: 200px;
@@ -11067,5 +11066,7 @@ aside ul .list-group-item a:hover:after {
   background-image: url(/images/34714751.jpg?1b3681f24f189acc0d44f12a11d92867);
   background-size: cover;
   background-position: 0 -200px;
+  height: calc(100vh - 55px);
+  overflow: hidden;
 }
 
