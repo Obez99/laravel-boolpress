@@ -44,7 +44,7 @@ export default {
   },
   mounted() {
     window.axios.get("/api/posts?page=" + 1).then((resp) => {
-      this.apiData.push(resp.data);
+      this.apiData = resp.data;
       let response = resp.data.data.reverse();
       response.forEach((item) => {
         item.created_at = item.created_at.substring(0, 10);

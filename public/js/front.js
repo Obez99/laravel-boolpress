@@ -140,12 +140,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaginationButtons",
   props: ["data"]
@@ -262,8 +256,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     window.axios.get("/api/posts?page=" + 1).then(function (resp) {
-      _this.apiData.push(resp.data);
-
+      _this.apiData = resp.data;
       var response = resp.data.data.reverse();
       response.forEach(function (item) {
         item.created_at = item.created_at.substring(0, 10);
@@ -1643,14 +1636,14 @@ var render = function () {
             staticClass: "page-item",
             on: {
               click: function ($event) {
-                return _vm.$emit("prevPage", _vm.data[0].current_page - 1)
+                return _vm.$emit("prevPage", _vm.data.current_page - 1)
               },
             },
           },
           [_vm._m(0)]
         ),
         _vm._v(" "),
-        _vm._l(_vm.data[0].last_page, function (page) {
+        _vm._l(_vm.data.last_page, function (page) {
           return _c(
             "li",
             {
@@ -1672,7 +1665,7 @@ var render = function () {
             staticClass: "page-item",
             on: {
               click: function ($event) {
-                return _vm.$emit("nextPage", _vm.data[0].current_page + 1)
+                return _vm.$emit("nextPage", _vm.data.current_page + 1)
               },
             },
           },

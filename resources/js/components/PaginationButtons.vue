@@ -1,24 +1,18 @@
 <template>
   <nav class="buttons-container">
     <ul class="pagination">
-      <li
-        class="page-item"
-        @click="$emit('prevPage', data[0].current_page - 1)"
-      >
+      <li class="page-item" @click="$emit('prevPage', data.current_page - 1)">
         <a class="page-link"><i class="fas fa-chevron-left"></i></a>
       </li>
       <li
         class="page-item"
         @click="$emit('pageChange', page)"
-        v-for="page in data[0].last_page"
+        v-for="page in data.last_page"
         :key="page"
       >
         <a class="page-link">{{ page }}</a>
       </li>
-      <li
-        class="page-item"
-        @click="$emit('nextPage', data[0].current_page + 1)"
-      >
+      <li class="page-item" @click="$emit('nextPage', data.current_page + 1)">
         <a class="page-link"><i class="fas fa-chevron-right"></i></a>
       </li>
     </ul>
