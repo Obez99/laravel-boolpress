@@ -19,8 +19,9 @@
         <PaginationButtons
           @pageChange="fetchData($event)"
           @nextPage="fetchData($event)"
-          @prevPage="fetchData($event)"
+          @prevPage="fetchData($event, false)"
           :data="apiData"
+          :currentPage="currentPage"
         ></PaginationButtons>
       </div>
     </div>
@@ -40,28 +41,33 @@ export default {
     return {
       apiData: [],
       posts: [],
+      currentPage: 1,
     };
   },
   mounted() {
     window.axios.get("/api/posts?page=" + 1).then((resp) => {
       this.apiData = resp.data;
-      let response = resp.data.data.reverse();
+      let response = resp.data.data;
       response.forEach((item) => {
-        item.created_at = item.created_at.substring(0, 10);
         this.posts.push(item);
       });
     });
   },
   methods: {
-    fetchData(page = 1) {
+    fetchData(page = 1, pageIncrement = true) {
       window.axios.get("/api/posts?page=" + page).then((resp) => {
         this.posts = [];
-        let response = resp.data.data.reverse();
+        let response = resp.data.data;
         response.forEach((item) => {
-          item.created_at = item.created_at.substring(0, 10);
           this.posts.push(item);
         });
       });
+
+      if (pageIncrement && this.currentPage < this.apiData.last_page) {
+        this.currentPage++;
+      } else if (pageIncrement === false && this.currentPage > 1) {
+        this.currentPage--;
+      }
     },
   },
 };

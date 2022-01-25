@@ -140,9 +140,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaginationButtons",
-  props: ["data"]
+  props: ["data", "currentPage"]
 });
 
 /***/ }),
@@ -236,6 +245,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -249,7 +259,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       apiData: [],
-      posts: []
+      posts: [],
+      currentPage: 1
     };
   },
   mounted: function mounted() {
@@ -257,10 +268,8 @@ __webpack_require__.r(__webpack_exports__);
 
     window.axios.get("/api/posts?page=" + 1).then(function (resp) {
       _this.apiData = resp.data;
-      var response = resp.data.data.reverse();
+      var response = resp.data.data;
       response.forEach(function (item) {
-        item.created_at = item.created_at.substring(0, 10);
-
         _this.posts.push(item);
       });
     });
@@ -270,15 +279,20 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var pageIncrement = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
       window.axios.get("/api/posts?page=" + page).then(function (resp) {
         _this2.posts = [];
-        var response = resp.data.data.reverse();
+        var response = resp.data.data;
         response.forEach(function (item) {
-          item.created_at = item.created_at.substring(0, 10);
-
           _this2.posts.push(item);
         });
       });
+
+      if (pageIncrement && this.currentPage < this.apiData.last_page) {
+        this.currentPage++;
+      } else if (pageIncrement === false && this.currentPage > 1) {
+        this.currentPage--;
+      }
     }
   }
 });
@@ -1634,6 +1648,7 @@ var render = function () {
           "li",
           {
             staticClass: "page-item",
+            class: _vm.currentPage === 1 ? "disabled" : "",
             on: {
               click: function ($event) {
                 return _vm.$emit("prevPage", _vm.data.current_page - 1)
@@ -1649,6 +1664,7 @@ var render = function () {
             {
               key: page,
               staticClass: "page-item",
+              class: _vm.currentPage === page ? "active" : "",
               on: {
                 click: function ($event) {
                   return _vm.$emit("pageChange", page)
@@ -1663,6 +1679,7 @@ var render = function () {
           "li",
           {
             staticClass: "page-item",
+            class: _vm.currentPage === _vm.data.last_page ? "disabled" : "",
             on: {
               click: function ($event) {
                 return _vm.$emit("nextPage", _vm.data.current_page + 1)
@@ -1818,7 +1835,7 @@ var render = function () {
               : _vm._e(),
             _vm._v(" "),
             _c("PaginationButtons", {
-              attrs: { data: _vm.apiData },
+              attrs: { data: _vm.apiData, currentPage: _vm.currentPage },
               on: {
                 pageChange: function ($event) {
                   return _vm.fetchData($event)
@@ -1827,7 +1844,7 @@ var render = function () {
                   return _vm.fetchData($event)
                 },
                 prevPage: function ($event) {
-                  return _vm.fetchData($event)
+                  return _vm.fetchData($event, false)
                 },
               },
             }),
