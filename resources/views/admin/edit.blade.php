@@ -3,7 +3,7 @@
 @section('content')
 <h2>Modifica post</h2>
 
-<form action="{{route('admin.posts.update', $post->id)}}" method="post">
+<form action="{{route('admin.posts.update', $post->slug)}}" method="post">
   @csrf
   @method("PATCH")
 

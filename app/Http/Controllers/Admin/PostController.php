@@ -8,6 +8,15 @@ use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+
+function slugGenerator($title)
+{
+    $sluggedTitle = Str::slug($title);
+    $randomNumber = rand(1000, 9999);
+    $sluggedTitle .= "-" . $randomNumber;
+    return $sluggedTitle;
+}
 
 class PostController extends Controller
 {
@@ -51,6 +60,7 @@ class PostController extends Controller
         $data = $request->all();
         $newPost = new Post;
         $newPost->fill($data);
+        $newPost->slug = slugGenerator($newPost->title);
         $newPost->user_id = Auth::user()->id;
         $newPost->save();
 
@@ -67,8 +77,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($slug)
     {
+        $post = Post::where("slug", $slug)->first();
         return view("admin.show", compact("post"));
     }
 
@@ -78,8 +89,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($slug)
     {
+        $post = Post::where("slug", $slug)->first();
         $categories = Category::all();
         $tags = Tag::all();
         return view("admin.edit", compact("post", "categories", "tags"));
@@ -92,14 +104,18 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $slug)
     {
+
         $request->validate([
             'title' => 'required|max:50',
             'content' => 'required|max:1000',
         ]);
 
+
+        $post = Post::where("slug", $slug)->first();
         $editedPost = $request->all();
+        $editedPost["slug"] = slugGenerator($editedPost["title"]);
         $post->update($editedPost);
 
         if (isset($editedPost["tags"])) {
@@ -109,7 +125,7 @@ class PostController extends Controller
         }
 
 
-        return redirect()->route("admin.posts.show", $post)->with("msg", "Post modificato correttamente!");
+        return redirect()->route("admin.posts.show", $post->slug)->with("msg", "Post modificato correttamente!");
     }
 
     /**
@@ -118,8 +134,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($slug)
     {
+        $post = Post::where("slug", $slug)->first();
         $post->delete();
         return redirect()->route("admin.posts.index")->with("msg", "Post eliminato correttamente!");
     }

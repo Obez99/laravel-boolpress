@@ -19,7 +19,7 @@ class CommentController extends Controller
         $newComment = new Comment;
         $newComment->fill($data);
         $newComment->save();
-        return redirect()->route("admin.posts.show", $newComment->post_id);
+        return redirect()->route("admin.posts.show", $newComment->post->slug);
     }
 
     public function destroy(Comment $comment)
