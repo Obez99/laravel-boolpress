@@ -246,6 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -1842,20 +1843,22 @@ var render = function () {
                 ])
               : _vm._e(),
             _vm._v(" "),
-            _c("PaginationButtons", {
-              attrs: { data: _vm.apiData, currentPage: _vm.currentPage },
-              on: {
-                pageChange: function ($event) {
-                  return _vm.fetchData($event)
-                },
-                nextPage: function ($event) {
-                  return _vm.fetchData($event)
-                },
-                prevPage: function ($event) {
-                  return _vm.fetchData($event, false)
-                },
-              },
-            }),
+            this.posts.length > 0
+              ? _c("PaginationButtons", {
+                  attrs: { data: _vm.apiData, currentPage: _vm.currentPage },
+                  on: {
+                    pageChange: function ($event) {
+                      return _vm.fetchData($event)
+                    },
+                    nextPage: function ($event) {
+                      return _vm.fetchData($event)
+                    },
+                    prevPage: function ($event) {
+                      return _vm.fetchData($event, false)
+                    },
+                  },
+                })
+              : _vm._e(),
           ],
           2
         ),

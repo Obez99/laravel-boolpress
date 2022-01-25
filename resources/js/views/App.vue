@@ -17,6 +17,7 @@
           Nessun post disponibile, torna più tardi!
         </h2>
         <PaginationButtons
+          v-if="this.posts.length > 0"
           @pageChange="fetchData($event)"
           @nextPage="fetchData($event)"
           @prevPage="fetchData($event, false)"
