@@ -270,6 +270,8 @@ __webpack_require__.r(__webpack_exports__);
       _this.apiData = resp.data;
       var response = resp.data.data;
       response.forEach(function (item) {
+        item.created_at = _this.formatDate(item.created_at);
+
         _this.posts.push(item);
       });
     });
@@ -284,6 +286,8 @@ __webpack_require__.r(__webpack_exports__);
         _this2.posts = [];
         var response = resp.data.data;
         response.forEach(function (item) {
+          item.created_at = _this2.formatDate(item.created_at);
+
           _this2.posts.push(item);
         });
       });
@@ -293,6 +297,10 @@ __webpack_require__.r(__webpack_exports__);
       } else if (pageIncrement === false && this.currentPage > 1) {
         this.currentPage--;
       }
+    },
+    formatDate: function formatDate(date) {
+      var formattedDate = dayjs(date).format("DD MM YYYY") + " alle " + dayjs(date).format("HH:MM");
+      return formattedDate;
     }
   }
 });

@@ -49,6 +49,7 @@ export default {
       this.apiData = resp.data;
       let response = resp.data.data;
       response.forEach((item) => {
+        item.created_at = this.formatDate(item.created_at);
         this.posts.push(item);
       });
     });
@@ -59,6 +60,7 @@ export default {
         this.posts = [];
         let response = resp.data.data;
         response.forEach((item) => {
+          item.created_at = this.formatDate(item.created_at);
           this.posts.push(item);
         });
       });
@@ -68,6 +70,15 @@ export default {
       } else if (pageIncrement === false && this.currentPage > 1) {
         this.currentPage--;
       }
+    },
+
+    formatDate(date) {
+      const formattedDate =
+        dayjs(date).format("DD MM YYYY") +
+        " alle " +
+        dayjs(date).format("HH:MM");
+
+      return formattedDate;
     },
   },
 };
