@@ -446,6 +446,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
   data: function data() {
@@ -561,7 +567,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".post-show-section {\n  background-color: lightgray;\n  padding: 20px;\n}\n.post-show-section .post-container {\n  padding: 20px;\n  box-shadow: 1px 1px 10px lightgray;\n}\n.post-show-section .post-container .post-title {\n  font-weight: bolder;\n}\n.post-show-section .post-container .post-content {\n  font-size: 25px;\n  font-style: italic;\n}", ""]);
+exports.push([module.i, ".post-show-section {\n  padding: 20px;\n  background-color: lightgray;\n}\n.post-show-section .post-container {\n  padding: 20px;\n  box-shadow: 1px 1px 10px lightgray;\n  background-color: white;\n  height: 600px;\n  position: relative;\n}\n.post-show-section .post-container .post-title {\n  font-weight: bolder;\n}\n.post-show-section .post-container .post-content {\n  font-size: 25px;\n  font-style: italic;\n}\n.post-show-section .post-container .post-date-user {\n  position: absolute;\n  bottom: 20px;\n  left: 20px;\n}\n.post-show-section .post-container .post-category {\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n  border: 1px solid #bdafaf;\n  box-shadow: 1px 1px 10px lightgray;\n  background-color: lightgray;\n  padding: 5px;\n}", ""]);
 
 // exports
 
@@ -2334,13 +2340,20 @@ var render = function () {
           _vm._v(_vm._s(_vm.post.content)),
         ]),
         _vm._v(" "),
-        _c("strong", [
+        _c("strong", { staticClass: "post-date-user" }, [
           _vm._v(
             "Creato il " +
               _vm._s(_vm.formatDate(_vm.post.updated_at)) +
               " da\n        " +
               _vm._s(_vm.post.user.name)
           ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "post-category" }, [
+          _c("span", [_vm._v("Categoria: ")]),
+          _c("strong", { style: { color: _vm.post.category.color } }, [
+            _vm._v(_vm._s(_vm.post.category.name)),
+          ]),
         ]),
       ]),
     ]),

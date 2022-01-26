@@ -1,16 +1,33 @@
 
 .post-show-section{
-  background-color: lightgray;
   padding: 20px;
+  background-color: lightgray;
   .post-container{
     padding: 20px;
     box-shadow: 1px 1px 10px lightgray;
+    background-color: white;
+    height: 600px;
+    position: relative;
     .post-title{
       font-weight: bolder;
     }
     .post-content{
       font-size: 25px;
       font-style: italic;
+    }
+    .post-date-user{
+      position: absolute;
+      bottom:20px;
+      left:20px;
+    }
+    .post-category{
+      position: absolute;
+      bottom:20px;
+      right:20px;
+      border: 1px solid rgb(189, 175, 175);
+      box-shadow: 1px 1px 10px lightgray;
+      background-color: lightgray;
+      padding: 5px;
     }
   }
 }

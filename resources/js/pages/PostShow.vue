@@ -4,10 +4,16 @@
       <div class="post-container">
         <h2 class="post-title">{{ post.title }}</h2>
         <p class="post-content">{{ post.content }}</p>
-        <strong
+        <strong class="post-date-user"
           >Creato il {{ formatDate(post.updated_at) }} da
           {{ post.user.name }}</strong
         >
+        <div class="post-category">
+          <span>Categoria: </span
+          ><strong :style="{ color: post.category.color }">{{
+            post.category.name
+          }}</strong>
+        </div>
       </div>
     </div>
   </section>
