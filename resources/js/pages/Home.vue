@@ -9,7 +9,7 @@
         :author="post.user.name"
         :category="post.category"
         :tags="post.tags"
-        :creationDate="post.created_at"
+        :date="post.updated_at"
         :slug="post.slug"
       ></Post>
       <h2 v-if="posts.length === 0" class="text-center">
@@ -42,7 +42,7 @@ export default {
       this.apiData = resp.data;
       let response = resp.data.data;
       response.forEach((item) => {
-        item.created_at = this.formatDate(item.created_at);
+        item.updated_at = this.formatDate(item.updated_at);
         this.posts.push(item);
       });
     });

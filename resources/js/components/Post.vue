@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="card-footer text-muted">
-      Pubblicato il {{ creationDate }} da <strong>{{ author }}</strong>
+      Pubblicato il {{ date }} da <strong>{{ author }}</strong>
     </div>
   </div>
 </template>
@@ -37,15 +37,7 @@
 <script>
 export default {
   name: "Post",
-  props: [
-    "title",
-    "description",
-    "author",
-    "creationDate",
-    "category",
-    "tags",
-    "slug",
-  ],
+  props: ["title", "description", "author", "date", "category", "tags", "slug"],
 };
 </script>
 
