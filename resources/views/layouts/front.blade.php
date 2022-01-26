@@ -76,9 +76,9 @@
             </div>
         </nav>
 
-        <main>
-            @yield('content')
-        </main>
+
+        @yield('content')
+
     </div>
 </body>
 </html>

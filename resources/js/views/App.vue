@@ -1,47 +1,22 @@
 <template>
   <div id="root">
-    <Jumbotron></Jumbotron>
-    <div class="posts-section">
-      <div class="container">
-        <Post
-          v-for="post in posts"
-          :key="post.id"
-          :title="post.title"
-          :description="post.content"
-          :author="post.user.name"
-          :category="post.category"
-          :tags="post.tags"
-          :creationDate="post.created_at"
-        ></Post>
-        <h2 v-if="posts.length === 0" class="text-center">
-          Nessun post disponibile, torna più tardi!
-        </h2>
-        <PaginationButtons
-          v-if="this.posts.length > 0"
-          @pageChange="fetchData($event)"
-          @nextPage="fetchData($event)"
-          @prevPage="fetchData($event, false)"
-          :data="apiData"
-          :currentPage="currentPage"
-        ></PaginationButtons>
-      </div>
-    </div>
+    <Header></Header>
+    <Main :posts="this.posts" :apiData="this.apiData"></Main>
   </div>
 </template>
 
 
 <script>
-import Jumbotron from "../components/Jumbotron.vue";
-import Post from "../components/Post.vue";
-import PaginationButtons from "../components/PaginationButtons.vue";
+import Header from "../components/Header.vue";
+import Main from "../components/Main.vue";
 
 export default {
   name: "app",
-  components: { Jumbotron, Post, PaginationButtons },
+  components: { Header, Main },
   data() {
     return {
-      apiData: [],
       posts: [],
+      apiData: [],
       currentPage: 1,
     };
   },
@@ -56,23 +31,6 @@ export default {
     });
   },
   methods: {
-    fetchData(page = 1, pageIncrement = true) {
-      window.axios.get("/api/posts?page=" + page).then((resp) => {
-        this.posts = [];
-        let response = resp.data.data;
-        response.forEach((item) => {
-          item.created_at = this.formatDate(item.created_at);
-          this.posts.push(item);
-        });
-      });
-
-      if (pageIncrement && this.currentPage < this.apiData.last_page) {
-        this.currentPage++;
-      } else if (pageIncrement === false && this.currentPage > 1) {
-        this.currentPage--;
-      }
-    },
-
     formatDate(date) {
       const formattedDate =
         dayjs(date).format("DD MM YYYY") +
@@ -88,13 +46,5 @@ export default {
 <style lang="scss">
 #root {
   width: 100%;
-
-  .posts-section {
-    min-height: 210px;
-    background-color: lightgray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 }
 </style>
