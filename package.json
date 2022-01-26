@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "dayjs": "^1.10.7"
+        "dayjs": "^1.10.7",
+        "vue-router": "^3.5.3"
     }
 }
