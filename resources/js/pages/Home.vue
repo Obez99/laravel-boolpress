@@ -18,6 +18,10 @@
       <PaginationButtons
         v-if="this.posts.length > 0"
         :apiData="apiData"
+        :currentPage="currentPage"
+        @nextPage="this.nextPage"
+        @prevPage="this.prevPage"
+        @changePage="this.changePage"
       ></PaginationButtons>
     </div>
   </div>
@@ -38,14 +42,7 @@ export default {
     };
   },
   mounted() {
-    window.axios.get("/api/posts?page=" + 1).then((resp) => {
-      this.apiData = resp.data;
-      let response = resp.data.data;
-      response.forEach((item) => {
-        item.updated_at = this.formatDate(item.updated_at);
-        this.posts.push(item);
-      });
-    });
+    this.fetchData(this.currentPage);
   },
   methods: {
     formatDate(date) {
@@ -55,6 +52,43 @@ export default {
         dayjs(date).format("HH:MM");
 
       return formattedDate;
+    },
+
+    fetchData(param) {
+      window.axios.get("/api/posts?page=" + param).then((resp) => {
+        this.apiData = resp.data;
+        let response = resp.data.data;
+        response.forEach((item) => {
+          item.updated_at = this.formatDate(item.updated_at);
+          this.posts.push(item);
+        });
+      });
+    },
+
+    nextPage() {
+      if (this.apiData.last_page === this.currentPage) {
+        return;
+      } else {
+        this.currentPage++;
+        this.posts = [];
+        this.fetchData(this.currentPage);
+      }
+    },
+
+    prevPage() {
+      if (this.currentPage === 1) {
+        return;
+      } else {
+        this.currentPage--;
+        this.posts = [];
+        this.fetchData(this.currentPage);
+      }
+    },
+
+    changePage(pageNum) {
+      this.currentPage = pageNum;
+      this.posts = [];
+      this.fetchData(this.currentPage);
     },
   },
 };
