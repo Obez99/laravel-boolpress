@@ -256,9 +256,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Post",
-  props: ["title", "description", "author", "creationDate", "category", "tags"]
+  props: ["title", "description", "author", "creationDate", "category", "tags", "slug"]
 });
 
 /***/ }),
@@ -312,6 +317,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Post_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Post.vue */ "./resources/js/components/Post.vue");
 /* harmony import */ var _components_PaginationButtons_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/PaginationButtons.vue */ "./resources/js/components/PaginationButtons.vue");
+//
 //
 //
 //
@@ -1774,61 +1780,82 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("header", [
+    _c("div", { staticClass: "container" }, [
+      _c(
+        "nav",
+        { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
+        [
+          _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
+            _vm._v("Boolpress"),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbarNav" },
+            },
+            [
+              _c("ul", { staticClass: "navbar-nav ml-auto" }, [
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "/" } },
+                      [_vm._v("Home")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "contact" } },
+                      [_vm._v("Contatti")]
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "nav-link", attrs: { to: "about" } },
+                      [_vm._v("Chi siamo")]
+                    ),
+                  ],
+                  1
+                ),
+              ]),
+            ]
+          ),
+        ]
+      ),
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("div", { staticClass: "container" }, [
-        _c(
-          "nav",
-          { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
-          [
-            _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-              _vm._v("Boolpress"),
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse navbar-collapse",
-                attrs: { id: "navbarNav" },
-              },
-              [
-                _c("ul", { staticClass: "navbar-nav ml-auto" }, [
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Home"),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Contatti"),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "nav-item" }, [
-                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                      _vm._v("Chi siamo"),
-                    ]),
-                  ]),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "jumbotron-container" }, [
-        _c("div", { staticClass: "jumbotron-text" }, [
-          _c("h1", [_vm._v("Benvenuto su Boolpress!")]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Crea un nuovo post o registrati!")]),
-        ]),
+    return _c("div", { staticClass: "jumbotron-container" }, [
+      _c("div", { staticClass: "jumbotron-text" }, [
+        _c("h1", [_vm._v("Benvenuto su Boolpress!")]),
+        _vm._v(" "),
+        _c("p", [_vm._v("Crea un nuovo post o registrati!")]),
       ]),
     ])
   },
@@ -1948,7 +1975,23 @@ var render = function () {
           "card-header d-flex justify-content-between align-items-center",
       },
       [
-        _vm._v("\n    " + _vm._s(_vm.title) + "\n    "),
+        _c(
+          "div",
+          { staticClass: "d-flex align-items-center" },
+          [
+            _vm._v("\n      " + _vm._s(_vm.title) + "\n      "),
+            _c(
+              "router-link",
+              {
+                staticClass: "btn btn-success ml-3",
+                attrs: { to: "post/" + _vm.slug },
+              },
+              [_c("i", { staticClass: "fas fa-eye" })]
+            ),
+          ],
+          1
+        ),
+        _vm._v(" "),
         _c(
           "div",
           {
@@ -2072,6 +2115,7 @@ var render = function () {
               category: post.category,
               tags: post.tags,
               creationDate: post.created_at,
+              slug: post.slug,
             },
           })
         }),
@@ -17933,6 +17977,7 @@ var routes = [{
   name: 'post'
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_5__["default"]({
+  mode: "history",
   routes: routes
 });
 var app = new Vue({

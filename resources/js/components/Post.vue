@@ -1,7 +1,12 @@
 <template>
   <div class="card my-3">
     <div class="card-header d-flex justify-content-between align-items-center">
-      {{ title }}
+      <div class="d-flex align-items-center">
+        {{ title }}
+        <router-link :to="`post/${slug}`" class="btn btn-success ml-3"
+          ><i class="fas fa-eye"></i
+        ></router-link>
+      </div>
       <div
         class="badge text-white"
         :style="{ 'background-color': category.color }"
@@ -32,7 +37,15 @@
 <script>
 export default {
   name: "Post",
-  props: ["title", "description", "author", "creationDate", "category", "tags"],
+  props: [
+    "title",
+    "description",
+    "author",
+    "creationDate",
+    "category",
+    "tags",
+    "slug",
+  ],
 };
 </script>
 

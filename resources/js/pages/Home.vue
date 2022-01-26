@@ -10,6 +10,7 @@
         :category="post.category"
         :tags="post.tags"
         :creationDate="post.created_at"
+        :slug="post.slug"
       ></Post>
       <h2 v-if="posts.length === 0" class="text-center">
         Nessun post disponibile, torna più tardi!
