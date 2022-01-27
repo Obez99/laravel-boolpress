@@ -1,39 +1,49 @@
 <template>
-  <div class="posts-section">
-    <div class="container">
-      <Post
-        v-for="post in posts"
-        :key="post.id"
-        :title="post.title"
-        :description="post.content"
-        :author="post.user.name"
-        :category="post.category"
-        :tags="post.tags"
-        :date="post.updated_at"
-        :slug="post.slug"
-      ></Post>
-      <h2 v-if="posts.length === 0" class="text-center">
-        Nessun post disponibile, torna più tardi!
-      </h2>
-      <PaginationButtons
-        v-if="this.posts.length > 0"
-        :apiData="apiData"
-        :currentPage="currentPage"
-        @nextPage="this.nextPage"
-        @prevPage="this.prevPage"
-        @changePage="this.changePage"
-      ></PaginationButtons>
-    </div>
+  <div>
+    <Header
+      :title="'Benvenuto su Boolpress!'"
+      :subtitle="'Ti trovi nella sezione dei post.'"
+      :imageUrl="'img/jumbotron.jpeg'"
+    ></Header>
+    <main>
+      <div class="posts-section">
+        <div class="container">
+          <Post
+            v-for="post in posts"
+            :key="post.id"
+            :title="post.title"
+            :description="post.content"
+            :author="post.user.name"
+            :category="post.category"
+            :tags="post.tags"
+            :date="post.updated_at"
+            :slug="post.slug"
+          ></Post>
+          <h2 v-if="posts.length === 0" class="text-center">
+            Nessun post disponibile, torna più tardi!
+          </h2>
+          <PaginationButtons
+            v-if="this.posts.length > 0"
+            :apiData="apiData"
+            :currentPage="currentPage"
+            @nextPage="this.nextPage"
+            @prevPage="this.prevPage"
+            @changePage="this.changePage"
+          ></PaginationButtons>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
 import Post from "../components/Post.vue";
 import PaginationButtons from "../components/PaginationButtons.vue";
+import Header from "../components/Header.vue";
 
 export default {
   name: "Home",
-  components: { Post, PaginationButtons },
+  components: { Post, PaginationButtons, Header },
   data() {
     return {
       posts: [],

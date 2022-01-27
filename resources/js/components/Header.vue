@@ -23,10 +23,13 @@
       </nav>
     </div>
 
-    <div class="jumbotron-container">
+    <div
+      class="jumbotron-container"
+      :style="{ 'background-image': `url(${imageUrl})` }"
+    >
       <div class="jumbotron-text">
-        <h1>Benvenuto su Boolpress!</h1>
-        <p>Crea un nuovo post o registrati!</p>
+        <h1>{{ title }}</h1>
+        <p>{{ subtitle }}</p>
       </div>
     </div>
   </header>
@@ -35,6 +38,7 @@
 <script>
 export default {
   name: "Header",
+  props: ["title", "subtitle", "imageUrl"],
 };
 </script>
 
