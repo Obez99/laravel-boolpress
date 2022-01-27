@@ -11021,6 +11021,7 @@ aside ul .list-group-item a:hover:after {
   border-radius: 10px;
   box-shadow: 1px 1px 20px gray;
   padding: 10px;
+  overflow: auto;
 }
 
 .dashboard-content .inner-box h2 {
