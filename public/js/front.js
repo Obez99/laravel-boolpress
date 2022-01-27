@@ -2048,8 +2048,8 @@ var render = function () {
             _c(
               "div",
               { staticClass: "social-icons d-flex" },
-              _vm._l(_vm.socialLinks, function (icon) {
-                return _c("div", { key: icon, staticClass: "icon mr-3" }, [
+              _vm._l(_vm.socialLinks, function (icon, i) {
+                return _c("div", { key: i, staticClass: "icon mr-3" }, [
                   _c("a", { attrs: { href: "#" } }, [_c("i", { class: icon })]),
                 ])
               }),
@@ -2060,10 +2060,10 @@ var render = function () {
           _c(
             "div",
             { staticClass: "links col-4" },
-            _vm._l(_vm.pageLinks, function (link) {
+            _vm._l(_vm.pageLinks, function (link, i) {
               return _c(
                 "router-link",
-                { key: link, staticClass: "ml-3", attrs: { to: link.link } },
+                { key: i, staticClass: "ml-3", attrs: { to: link.link } },
                 [_vm._v(_vm._s(link.name))]
               )
             }),

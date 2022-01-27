@@ -5,15 +5,15 @@
         <div class="social-links col-3">
           <h2 class="logo">Boolpress</h2>
           <div class="social-icons d-flex">
-            <div class="icon mr-3" v-for="icon in socialLinks" :key="icon">
+            <div class="icon mr-3" v-for="(icon, i) in socialLinks" :key="i">
               <a href="#"><i :class="icon"></i></a>
             </div>
           </div>
         </div>
         <div class="links col-4">
           <router-link
-            v-for="link in pageLinks"
-            :key="link"
+            v-for="(link, i) in pageLinks"
+            :key="i"
             :to="link.link"
             class="ml-3"
             >{{ link.name }}</router-link
