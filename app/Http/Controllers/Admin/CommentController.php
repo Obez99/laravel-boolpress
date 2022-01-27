@@ -25,6 +25,6 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         $comment->delete();
-        return redirect()->route("admin.posts.index");
+        return redirect()->route("admin.posts.show", $comment->post->slug);
     }
 }

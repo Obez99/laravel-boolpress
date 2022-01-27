@@ -14,7 +14,7 @@
     @foreach ($posts as $post)
       <li class="list-group-item p-0">
         <a href="{{route('admin.posts.show', $post->slug)}}" class="d-flex justify-content-between p-3">{{$post->title}}
-          <strong>{{$post->created_at}}</strong>
+          <strong>{{$post->updated_at}}</strong>
         </a>
       </li>
     @endforeach

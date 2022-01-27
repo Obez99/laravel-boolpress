@@ -11008,57 +11008,66 @@ aside ul .list-group-item a:hover:after {
 }
 
 .dashboard-content {
-  width: 1200px;
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
-  background: linear-gradient(0deg, #688fb6 0%, #081d32 100%);
+  width: 1100px;
+  height: 100%;
+  background: white;
+  border: 1px solid lightgray;
   border-radius: 20px;
-  margin-left: 200px;
-  margin-top: 50px;
 }
 
-.dashboard-content h2 {
+.dashboard-content .inner-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px gray;
+  padding: 10px;
+}
+
+.dashboard-content .inner-box h2 {
   margin-bottom: 35px;
   text-align: center;
 }
 
-.dashboard-content h2,
-.dashboard-content label {
-  color: white;
+.dashboard-content .inner-box h2 {
+  color: royalblue;
 }
 
-.dashboard-content form .form-group textarea {
+.dashboard-content .inner-box label {
+  color: #243977;
+  font-size: 20px;
+}
+
+.dashboard-content .inner-box form .form-group textarea {
   height: 200px;
   resize: none;
 }
 
-.dashboard-content .user-posts {
+.dashboard-content .inner-box .user-posts {
   height: 400px;
   overflow: auto;
 }
 
-.dashboard-content .user-posts a {
+.dashboard-content .inner-box .user-posts a {
   color: unset;
   transition: all 0.2s;
 }
 
-.dashboard-content .user-posts a:hover {
+.dashboard-content .inner-box .user-posts a:hover {
   text-decoration: none;
   background-color: royalblue;
   color: white;
 }
 
-.dashboard-content .comments-section .comments-container {
+.dashboard-content .inner-box .comments-section .comments-container {
   max-height: 200px;
   overflow: auto;
 }
 
-.dashboard-content .comments-section .comments-container .card {
+.dashboard-content .inner-box .comments-section .comments-container .card {
   background-color: #e4e3ec;
 }
 
-.dashboard-content .comments-section form textarea {
+.dashboard-content .inner-box .comments-section form textarea {
   resize: none;
 }
 

@@ -46,7 +46,7 @@
         <h6 class="card-subtitle mb-2 text-muted">{{$comment->created_at->format("d m Y, H:i")}}</h6>
         <p class="card-text">{{$comment->content}}</p>
         @if($comment->user->id === Auth::user()->id)
-        <form action="{{route('admin.comments.destroy', $comment->id)}}" method="post">
+        <form action="{{route('admin.comments.destroy', [$comment->id, $post->slug])}}" method="post">
           @csrf
           @method("DELETE")
           <input type="submit" class="btn btn-danger" value="Elimina">
@@ -57,7 +57,7 @@
     
     @endforeach
     @else
-    <p class="text-white">Ancora nessun commento</p>
+    <p class="alert alert-secondary">Ancora nessun commento</p>
   @endif
     </div>
 

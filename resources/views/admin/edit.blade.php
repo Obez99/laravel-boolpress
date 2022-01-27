@@ -9,15 +9,25 @@
 
   <div class="form-group">
     <label for="formGroupTitle">Titolo</label>
-    <input type="text" class="form-control" id="formGroupTitle" placeholder="Titolo" name="title" value="{{$post->title}}">
+    <input type="text" class="form-control @error('title') is-invalid @enderror" id="formGroupTitle" placeholder="Titolo" name="title" value="{{$post->title}}">
+    @error('title')
+    <span class="invalid-feedback" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+  @enderror
   </div>
   <div class="form-group">
     <label for="formGroupDescription">Descrizione</label>
-    <textarea type="text" class="form-control" id="formGroupDescription" placeholder="Scrivi qualcosa..." name="content">{{$post->content}}</textarea>
+    <textarea type="text" class="form-control @error('content') is-invalid @enderror" id="formGroupDescription" placeholder="Scrivi qualcosa..." name="content">{{$post->content}}</textarea>
+    @error('content')
+    <span class="invalid-feedback" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+  @enderror
   </div>
 
   <label for="formGroupCategory">Categoria</label>
-  <select id="formGroupCategory" class="form-control" name="category_id">
+  <select id="formGroupCategory" class="form-control @error('category_id') is-invalid @enderror" name="category_id">
     @foreach($categories as $category)
       <option value="{{$category->id}}" {{$category->id == $post->category_id ? 'selected' : ''}}>{{$category->name}}</option>
     @endforeach
@@ -36,14 +46,4 @@
   <input class="btn btn-success mt-5" type="submit" value="Modifica post">
   <input class="btn btn-danger mt-5" type="reset" value="Reset">
 </form>
-
-@if($errors->any())
-    <div class="alert alert-danger mt-3" role="alert">
-      <ul>
-      @foreach($errors->all() as $error)
-        <li>{{$error}}</li>
-      @endforeach
-      </ul>
-    </div>
-    @endif
 @endsection
