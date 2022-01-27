@@ -2,7 +2,7 @@
   <header>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Boolpress</a>
+        <router-link to="/" class="navbar-brand">Boolpress</router-link>
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
