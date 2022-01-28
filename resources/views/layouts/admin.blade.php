@@ -74,7 +74,7 @@
         </nav>
 
         <main class="d-flex admin-main">
-            <aside>
+            <aside class="admin-aside">
                 <ul class="list-group mx-5 ">
                     <li class="list-group-item"><a href="{{route("admin.home")}}"><i class="fas fa-user mr-3"></i>Profilo</a></li>
                     <li class="list-group-item"><a href="{{route('admin.posts.index')}}"><i class="fas fa-clipboard mr-3"></i>I tuoi Post</a></li>

@@ -1,0 +1,46 @@
+.admin-aside{
+  height: 100%;
+  width: 300px;
+  background: linear-gradient(0deg, rgba(198,208,238,1) 0%, rgba(26,65,110,1) 100%);
+  padding: 20px 0;
+
+  ul{
+    .list-group-item{
+      background: transparent;
+      text-align: center;
+      padding:0;
+      border:0;
+
+      a{
+        width:100%;
+        height:100%;
+        display:inline-block;
+        padding:10px;
+        font-size:20px;
+        color:white;
+        border-bottom: 2px solid transparent;
+        transition:border 0.3s;
+        position: relative;
+
+        &:after{
+          content:"";
+          width:0;
+          height:2px;
+          background: linear-gradient(90deg, rgba(198,208,238,1) 0%, rgba(123,142,176,1) 100%);
+          position: absolute;
+          bottom:0;
+          left:0;
+          transition: width 0.2s;
+        }
+
+        &:hover{
+          text-decoration: none;
+        }
+
+        &:hover:after{
+          width:100%;
+        }
+      }
+    }
+  }
+}
