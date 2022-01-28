@@ -12,10 +12,10 @@
             <aside class="col-2 py-3">
               <h3>Categorie</h3>
               <ul class="list-group">
-                <a
+                <router-link
                   v-for="category in categoriesList"
+                  :to="`/categories/${category.id}`"
                   :key="category.id"
-                  href="#"
                   class="
                     list-group-item list-group-item-action
                     d-flex
@@ -30,7 +30,7 @@
                     :style="`background-color:${category.color}`"
                     >{{ category.post.length }}</span
                   >
-                </a>
+                </router-link>
               </ul>
             </aside>
             <div class="posts col-6 offset-1">
