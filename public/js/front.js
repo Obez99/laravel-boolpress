@@ -616,7 +616,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "footer {\n  background-color: #3d3d3d;\n  color: white;\n}\nfooter a {\n  color: white;\n  text-decoration: none;\n}\nfooter .container .row {\n  height: 200px;\n}\nfooter .container .row .social-icons {\n  display: flex;\n}\nfooter .container .row .social-icons .icon {\n  background-color: #4e4e4e;\n  border-radius: 50%;\n  padding: 12px 15px;\n}\nfooter .container .row .social-icons .icon i {\n  font-size: 20px;\n}\nfooter .container .row .links {\n  font-size: 15px;\n}\nfooter .container .row .subscribe form {\n  display: flex;\n}\nfooter .container .row .subscribe form .email-input {\n  width: 180px;\n}\nfooter .container .row .subscribe form .submit-input {\n  margin-left: 10px;\n}", ""]);
+exports.push([module.i, "footer {\n  background-color: #3d3d3d;\n  color: white;\n}\nfooter a {\n  color: white;\n  text-decoration: none;\n}\nfooter .container .row {\n  height: 200px;\n}\nfooter .container .row .social-icons {\n  display: flex;\n}\nfooter .container .row .social-icons .icon {\n  background-color: #4e4e4e;\n  border-radius: 50%;\n  padding: 15px;\n  line-height: 15px;\n}\nfooter .container .row .social-icons .icon i {\n  font-size: 20px;\n}\nfooter .container .row .links {\n  font-size: 15px;\n}\nfooter .container .row .subscribe form {\n  display: flex;\n}\nfooter .container .row .subscribe form .email-input {\n  width: 180px;\n}\nfooter .container .row .subscribe form .submit-input {\n  margin-left: 10px;\n}", ""]);
 
 // exports
 
@@ -635,7 +635,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "header .jumbotron-container {\n  width: 100%;\n  height: 700px;\n  background-size: cover;\n  background-position: center;\n}\nheader .jumbotron-container .jumbotron-text {\n  color: white;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  text-shadow: 0 0 3px #000000, 0 0 5px #000000;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\nheader .jumbotron-container .jumbotron-text h1 {\n  font-size: 60px;\n  margin-bottom: 10px;\n}\nheader .jumbotron-container .jumbotron-text p {\n  font-size: 30px;\n}", ""]);
+exports.push([module.i, "header .navbar .router-link-exact-active {\n  position: relative;\n}\nheader .navbar .router-link-exact-active:after {\n  content: \"\";\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 80%;\n  height: 2px;\n  background-color: blue;\n}\nheader .jumbotron-container {\n  width: 100%;\n  height: 700px;\n  background-size: cover;\n  background-position: center;\n}\nheader .jumbotron-container .jumbotron-text {\n  color: white;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.5);\n  text-shadow: 0 0 3px #000000, 0 0 5px #000000;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\nheader .jumbotron-container .jumbotron-text h1 {\n  font-size: 60px;\n  margin-bottom: 10px;\n}\nheader .jumbotron-container .jumbotron-text p {\n  font-size: 30px;\n}", ""]);
 
 // exports
 
