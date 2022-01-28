@@ -453,6 +453,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -467,11 +495,18 @@ __webpack_require__.r(__webpack_exports__);
     return {
       posts: [],
       apiData: [],
-      currentPage: 1
+      currentPage: 1,
+      categoriesList: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.fetchData(this.currentPage);
+    window.axios.get("/api/categories").then(function (resp) {
+      console.log(resp.data);
+      _this.categoriesList = resp.data;
+    });
   },
   methods: {
     formatDate: function formatDate(date) {
@@ -479,15 +514,15 @@ __webpack_require__.r(__webpack_exports__);
       return formattedDate;
     },
     fetchData: function fetchData(param) {
-      var _this = this;
+      var _this2 = this;
 
       window.axios.get("/api/posts?page=" + param).then(function (resp) {
-        _this.apiData = resp.data;
+        _this2.apiData = resp.data;
         var response = resp.data.data;
         response.forEach(function (item) {
-          item.updated_at = _this.formatDate(item.updated_at);
+          item.updated_at = _this2.formatDate(item.updated_at);
 
-          _this.posts.push(item);
+          _this2.posts.push(item);
         });
       });
     },
@@ -2524,49 +2559,93 @@ var render = function () {
       _vm._v(" "),
       _c("main", [
         _c("div", { staticClass: "posts-section" }, [
-          _c(
-            "div",
-            { staticClass: "container" },
-            [
-              _vm._l(_vm.posts, function (post) {
-                return _c("Post", {
-                  key: post.id,
-                  attrs: {
-                    title: post.title,
-                    description: post.content,
-                    author: post.user.name,
-                    category: post.category,
-                    tags: post.tags,
-                    date: post.updated_at,
-                    slug: post.slug,
-                  },
-                })
-              }),
+          _c("div", { staticClass: "container-fluid" }, [
+            _c("div", { staticClass: "row" }, [
+              _c("aside", { staticClass: "col-2 py-3" }, [
+                _c("h3", [_vm._v("Categorie")]),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "list-group" },
+                  _vm._l(_vm.categoriesList, function (category) {
+                    return _c(
+                      "a",
+                      {
+                        key: category.id,
+                        staticClass:
+                          "\n                  list-group-item list-group-item-action\n                  d-flex\n                  justify-content-between\n                  align-items-center\n                ",
+                        attrs: { href: "#" },
+                      },
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(category.name) +
+                            "\n                "
+                        ),
+                        _c(
+                          "span",
+                          {
+                            staticClass: "badge badge-pill",
+                            staticStyle: {
+                              color: "white",
+                              "font-weight": "bold",
+                            },
+                            style: "background-color:" + category.color,
+                          },
+                          [_vm._v("14")]
+                        ),
+                      ]
+                    )
+                  }),
+                  0
+                ),
+              ]),
               _vm._v(" "),
-              _vm.posts.length === 0
-                ? _c("h2", { staticClass: "text-center" }, [
-                    _vm._v(
-                      "\n          Nessun post disponibile, torna più tardi!\n        "
-                    ),
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              this.posts.length > 0
-                ? _c("PaginationButtons", {
-                    attrs: {
-                      apiData: _vm.apiData,
-                      currentPage: _vm.currentPage,
-                    },
-                    on: {
-                      nextPage: this.nextPage,
-                      prevPage: this.prevPage,
-                      changePage: this.changePage,
-                    },
-                  })
-                : _vm._e(),
-            ],
-            2
-          ),
+              _c(
+                "div",
+                { staticClass: "posts col-6 offset-1" },
+                [
+                  _vm._l(_vm.posts, function (post) {
+                    return _c("Post", {
+                      key: post.id,
+                      attrs: {
+                        title: post.title,
+                        description: post.content,
+                        author: post.user.name,
+                        category: post.category,
+                        tags: post.tags,
+                        date: post.updated_at,
+                        slug: post.slug,
+                      },
+                    })
+                  }),
+                  _vm._v(" "),
+                  _vm.posts.length === 0
+                    ? _c("h2", { staticClass: "text-center" }, [
+                        _vm._v(
+                          "\n              Nessun post disponibile, torna più tardi!\n            "
+                        ),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.posts.length > 0
+                    ? _c("PaginationButtons", {
+                        attrs: {
+                          apiData: _vm.apiData,
+                          currentPage: _vm.currentPage,
+                        },
+                        on: {
+                          nextPage: this.nextPage,
+                          prevPage: this.prevPage,
+                          changePage: this.changePage,
+                        },
+                      })
+                    : _vm._e(),
+                ],
+                2
+              ),
+            ]),
+          ]),
         ]),
       ]),
     ],
