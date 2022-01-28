@@ -104,6 +104,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
@@ -707,7 +709,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "#root {\n  width: 100%;\n}", ""]);
+exports.push([module.i, "#root {\n  width: 100%;\n}\n.slide-enter-active,\n.slide-leave-active {\n  transition: opacity 0.5s, transform 0.5s;\n}\n.slide-enter,\n.slide-leave-to {\n  opacity: 0;\n  transform: translateX(-30%);\n}", ""]);
 
 // exports
 
@@ -2120,7 +2122,16 @@ var render = function () {
   return _c(
     "div",
     { attrs: { id: "root" } },
-    [_c("router-view"), _vm._v(" "), _c("Footer")],
+    [
+      _c(
+        "transition",
+        { attrs: { name: "slide", mode: "out-in" } },
+        [_c("router-view")],
+        1
+      ),
+      _vm._v(" "),
+      _c("Footer"),
+    ],
     1
   )
 }

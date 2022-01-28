@@ -1,6 +1,8 @@
 <template>
   <div id="root">
-    <router-view></router-view>
+    <transition name="slide" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <Footer></Footer>
   </div>
 </template>
@@ -18,5 +20,16 @@ export default {
 <style lang="scss">
 #root {
   width: 100%;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(-30%);
 }
 </style>
