@@ -28,7 +28,7 @@
                     class="badge badge-pill"
                     style="color: white; font-weight: bold"
                     :style="`background-color:${category.color}`"
-                    >14</span
+                    >{{ category.post.length }}</span
                   >
                 </a>
               </ul>
@@ -84,7 +84,6 @@ export default {
     this.fetchData(this.currentPage);
 
     window.axios.get("/api/categories").then((resp) => {
-      console.log(resp.data);
       this.categoriesList = resp.data;
     });
   },

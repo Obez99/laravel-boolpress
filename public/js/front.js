@@ -504,7 +504,6 @@ __webpack_require__.r(__webpack_exports__);
 
     this.fetchData(this.currentPage);
     window.axios.get("/api/categories").then(function (resp) {
-      console.log(resp.data);
       _this.categoriesList = resp.data;
     });
   },
@@ -2592,7 +2591,7 @@ var render = function () {
                             },
                             style: "background-color:" + category.color,
                           },
-                          [_vm._v("14")]
+                          [_vm._v(_vm._s(category.post.length))]
                         ),
                       ]
                     )
