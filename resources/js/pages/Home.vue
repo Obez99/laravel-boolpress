@@ -48,6 +48,18 @@
               <h2 v-if="posts.length === 0" class="text-center">
                 Nessun post disponibile, torna più tardi!
               </h2>
+              <div class="progress" v-if="posts.length === 0">
+                <div
+                  class="
+                    progress-bar progress-bar-striped progress-bar-animated
+                  "
+                  role="progressbar"
+                  aria-valuenow="100%"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  style="width: 100%"
+                ></div>
+              </div>
               <PaginationButtons
                 v-if="this.posts.length > 0"
                 :apiData="apiData"

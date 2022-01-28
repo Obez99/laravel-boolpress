@@ -545,6 +545,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2754,6 +2766,22 @@ var render = function () {
                         _vm._v(
                           "\n              Nessun post disponibile, torna più tardi!\n            "
                         ),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.posts.length === 0
+                    ? _c("div", { staticClass: "progress" }, [
+                        _c("div", {
+                          staticClass:
+                            "\n                  progress-bar progress-bar-striped progress-bar-animated\n                ",
+                          staticStyle: { width: "100%" },
+                          attrs: {
+                            role: "progressbar",
+                            "aria-valuenow": "100%",
+                            "aria-valuemin": "0",
+                            "aria-valuemax": "100",
+                          },
+                        }),
                       ])
                     : _vm._e(),
                   _vm._v(" "),
