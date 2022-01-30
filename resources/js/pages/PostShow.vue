@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header></Header>
+    <Header :imageUrl="post.image" :title="post.title"></Header>
     <main>
       <section class="post-show-section">
         <div class="container">

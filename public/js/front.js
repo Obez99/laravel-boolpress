@@ -2845,7 +2845,9 @@ var render = function () {
   return _c(
     "div",
     [
-      _c("Header"),
+      _c("Header", {
+        attrs: { imageUrl: _vm.post.image, title: _vm.post.title },
+      }),
       _vm._v(" "),
       _c("main", [
         _c("section", { staticClass: "post-show-section" }, [

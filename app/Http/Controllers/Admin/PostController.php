@@ -54,7 +54,8 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:50',
             'content' => 'required|max:1000',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'image' => 'url|ends_with:.svg,.png,.jpg,.jpeg'
         ]);
 
         $data = $request->all();
@@ -110,6 +111,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:50',
             'content' => 'required|max:1000',
+            'image' => 'url|ends_with:.svg,.png,.jpg,.jpeg'
         ]);
 
 

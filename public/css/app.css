@@ -11072,6 +11072,11 @@ a.text-dark:focus {
   resize: none;
 }
 
+.dashboard-content .inner-box .card-img-top {
+  max-height: 400px;
+  width: 100%;
+}
+
 .admin-main {
   background-image: url(/images/34714751.jpg?1b3681f24f189acc0d44f12a11d92867);
   background-size: cover;

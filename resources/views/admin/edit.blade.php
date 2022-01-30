@@ -9,7 +9,7 @@
 
   <div class="form-group">
     <label for="formGroupTitle">Titolo</label>
-    <input type="text" class="form-control @error('title') is-invalid @enderror" id="formGroupTitle" placeholder="Titolo" name="title" value="{{$post->title}}">
+    <input type="text" class="form-control @error('title') is-invalid @enderror" id="formGroupTitle" placeholder="Titolo" name="title" value="{{$post->title}}" required>
     @error('title')
     <span class="invalid-feedback" role="alert">
       <strong>{{ $message }}</strong>
@@ -18,8 +18,18 @@
   </div>
   <div class="form-group">
     <label for="formGroupDescription">Descrizione</label>
-    <textarea type="text" class="form-control @error('content') is-invalid @enderror" id="formGroupDescription" placeholder="Scrivi qualcosa..." name="content">{{$post->content}}</textarea>
+    <textarea type="text" class="form-control @error('content') is-invalid @enderror" id="formGroupDescription" placeholder="Scrivi qualcosa..." name="content" required>{{$post->content}}</textarea>
     @error('content')
+    <span class="invalid-feedback" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+  @enderror
+  </div>
+
+  <div class="form-group">
+    <label for="formGroupTitle">Immagine</label>
+    <input type="text" class="form-control @error('image') is-invalid @enderror" id="formGroupTitle" placeholder="Immagine" name="image" value="{{$post->image}}">
+    @error('image')
     <span class="invalid-feedback" role="alert">
       <strong>{{ $message }}</strong>
     </span>
@@ -35,7 +45,6 @@
 
   <label class="mt-3 d-block">Tags</label>
     <fieldset class="form-control">
-      {{-- @dump($post->tags) --}}
       @foreach ($tags as $tag)
       <input type="checkbox" name="tags[]" value="{{$tag->id}}" {{$post->tags->contains($tag) ? 'checked' : ''}}>
       <label class="text-dark mr-3">{{$tag->name}}</label>

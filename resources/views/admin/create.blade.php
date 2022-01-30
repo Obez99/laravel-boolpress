@@ -15,6 +15,7 @@
           </span>
         @enderror
       </div>
+
       <div class="form-group">
         <label for="formGroupExampleInput2">Descrizione</label>
         <textarea type="text" class="form-control @error('content') is-invalid @enderror" id="formGroupExampleInput2" placeholder="Scrivi qualcosa..." name="content">{{old('content')}}</textarea>
@@ -23,6 +24,16 @@
             <strong>{{ $message }}</strong>
           </span>
         @enderror
+      </div>
+
+      <div class="form-group">
+        <label for="formGroupTitle">Immagine</label>
+        <input type="text" class="form-control @error('image') is-invalid @enderror" id="formGroupTitle" placeholder="Immagine" name="image" value="{{old('image')}}">
+        @error('image')
+        <span class="invalid-feedback" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+      @enderror
       </div>
 
       <label>Categoria</label>
