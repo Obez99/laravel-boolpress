@@ -3,7 +3,7 @@
     <div class="card-header d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center">
         {{ title }}
-        <router-link :to="`post/${slug}`" class="btn btn-success ml-3"
+        <router-link :to="`/post/${slug}`" class="btn btn-success ml-3"
           ><i class="fas fa-eye"></i
         ></router-link>
       </div>

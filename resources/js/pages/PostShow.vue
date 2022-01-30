@@ -27,11 +27,11 @@
 <script>
 import Header from "../components/Header.vue";
 export default {
-  name: "Post",
+  name: "PostShow",
   components: { Header },
   data() {
     return {
-      post: Object,
+      post: [],
     };
   },
   mounted() {
@@ -39,7 +39,6 @@ export default {
 
     axios.get(`/api/post/${slug}`).then((resp) => {
       this.post = resp.data;
-      console.log(this.post);
     });
   },
 

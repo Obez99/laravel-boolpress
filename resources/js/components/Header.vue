@@ -10,10 +10,10 @@
               <router-link to="/" class="nav-link">Home</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="contact" class="nav-link">Contatti</router-link>
+              <router-link to="/contact" class="nav-link">Contatti</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="about" class="nav-link">Chi siamo</router-link>
+              <router-link to="/about" class="nav-link">Chi siamo</router-link>
             </li>
             <li class="nav-item">
               <a href="/login" class="nav-link">Login</a>

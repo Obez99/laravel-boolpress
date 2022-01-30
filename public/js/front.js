@@ -669,13 +669,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Post",
+  name: "PostShow",
   components: {
     Header: _components_Header_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      post: Object
+      post: []
     };
   },
   mounted: function mounted() {
@@ -684,7 +684,6 @@ __webpack_require__.r(__webpack_exports__);
     var slug = this.$route.params.slug;
     axios.get("/api/post/".concat(slug)).then(function (resp) {
       _this.post = resp.data;
-      console.log(_this.post);
     });
   },
   methods: {
@@ -2279,7 +2278,7 @@ var render = function () {
                   [
                     _c(
                       "router-link",
-                      { staticClass: "nav-link", attrs: { to: "contact" } },
+                      { staticClass: "nav-link", attrs: { to: "/contact" } },
                       [_vm._v("Contatti")]
                     ),
                   ],
@@ -2292,7 +2291,7 @@ var render = function () {
                   [
                     _c(
                       "router-link",
-                      { staticClass: "nav-link", attrs: { to: "about" } },
+                      { staticClass: "nav-link", attrs: { to: "/about" } },
                       [_vm._v("Chi siamo")]
                     ),
                   ],
@@ -2474,7 +2473,7 @@ var render = function () {
               "router-link",
               {
                 staticClass: "btn btn-success ml-3",
-                attrs: { to: "post/" + _vm.slug },
+                attrs: { to: "/post/" + _vm.slug },
               },
               [_c("i", { staticClass: "fas fa-eye" })]
             ),
