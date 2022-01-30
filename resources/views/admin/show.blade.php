@@ -39,7 +39,7 @@
   <h2 class="text-left mt-5">Commenti</h2>
   <div class="comments-container">
   @if(count($post->comments)>0)
-    @foreach($post->comments as $comment)
+    @foreach($post->comments->reverse() as $comment)
     <div class="card mb-3 w-100" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{$comment->user->name}}</h5>
