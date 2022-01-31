@@ -3,7 +3,7 @@
 @section('content')
     <h2>Crea nuovo post</h2>
 
-    <form action="{{route('admin.posts.store')}}" method="post">
+    <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
       @csrf
 
       <div class="form-group">
@@ -28,7 +28,7 @@
 
       <div class="form-group">
         <label for="formGroupTitle">Immagine</label>
-        <input type="text" class="form-control @error('image') is-invalid @enderror" id="formGroupTitle" placeholder="Immagine" name="image" value="{{old('image')}}">
+        <input type="file" class="form-control @error('image') is-invalid @enderror" id="formGroupTitle" placeholder="Immagine" name="image" value="{{old('image')}}">
         @error('image')
         <span class="invalid-feedback" role="alert">
           <strong>{{ $message }}</strong>

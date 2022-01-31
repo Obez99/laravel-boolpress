@@ -3,7 +3,7 @@
 @section('content')
 <h2>Modifica post</h2>
 
-<form action="{{route('admin.posts.update', $post->slug)}}" method="post">
+<form action="{{route('admin.posts.update', $post->slug)}}" method="post" enctype="multipart/form-data">
   @csrf
   @method("PATCH")
 
@@ -28,7 +28,7 @@
 
   <div class="form-group">
     <label for="formGroupTitle">Immagine</label>
-    <input type="text" class="form-control @error('image') is-invalid @enderror" id="formGroupTitle" placeholder="Immagine" name="image" value="{{$post->image}}">
+    <input type="file" class="form-control @error('image') is-invalid @enderror" id="formGroupTitle" placeholder="Immagine" name="image" value="{{$post->image}}">
     @error('image')
     <span class="invalid-feedback" role="alert">
       <strong>{{ $message }}</strong>

@@ -31,7 +31,7 @@ export default {
   components: { Header },
   data() {
     return {
-      post: [],
+      post: {},
     };
   },
   mounted() {

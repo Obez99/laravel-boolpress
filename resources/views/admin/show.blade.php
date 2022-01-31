@@ -9,7 +9,7 @@
 </div>
 @endif
 <div class="card my-3">
-  <img class="card-img-top" src="{{$post->image}}" alt="{{$post->title}}">
+  <img class="card-img-top" src="{{asset('storage/' . $post->image)}}" alt="{{$post->title}}">
   <strong class="card-header d-flex justify-content-between align-items-center">{{ $post->title }} <div class="category-label d-inline-block text-light p-2 rounded" style="background-color:{{$post->category->color}}">{{$post->category->name}}</div></strong>
   <div class="card-body">
     <p class="card-text">{{ $post->content }}</p>

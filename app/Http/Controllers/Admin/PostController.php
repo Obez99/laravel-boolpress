@@ -8,6 +8,7 @@ use App\Tag;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 function slugGenerator($title)
@@ -55,11 +56,11 @@ class PostController extends Controller
             'title' => 'required|max:50',
             'content' => 'required|max:1000',
             'category_id' => 'required',
-            'image' => 'url|ends_with:.svg,.png,.jpg,.jpeg'
         ]);
 
         $data = $request->all();
         $newPost = new Post;
+        $data["image"] = Storage::put('posts', $data["image"]);
         $newPost->fill($data);
         $newPost->slug = slugGenerator($newPost->title);
         $newPost->user_id = Auth::user()->id;
@@ -111,13 +112,18 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|max:50',
             'content' => 'required|max:1000',
-            'image' => 'url|ends_with:.svg,.png,.jpg,.jpeg'
         ]);
 
 
         $post = Post::where("slug", $slug)->first();
         $editedPost = $request->all();
         $editedPost["slug"] = slugGenerator($editedPost["title"]);
+
+        if (!is_null($post->image)) {
+            Storage::delete($post->image);
+        }
+
+        $editedPost["image"] = Storage::put('posts', $editedPost["image"]);
         $post->update($editedPost);
 
         if (isset($editedPost["tags"])) {
