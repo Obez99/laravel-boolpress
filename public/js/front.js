@@ -459,6 +459,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Contact",
@@ -2674,7 +2711,67 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("main", [_c("h1", [_vm._v("Contact")])])
+    return _c("main", [
+      _c("section", [
+        _c("div", { staticClass: "container py-5" }, [
+          _c("h2", [_vm._v("Compila il seguente form per contattarci.")]),
+          _vm._v(" "),
+          _c("form", { attrs: { method: "post", action: "api/contacts" } }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Nome")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "text", name: "name" },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Cognome")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "text", name: "surname" },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Indirizzo Email")]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: { type: "email", name: "email" },
+              }),
+              _vm._v(" "),
+              _c("small", { staticClass: "form-text text-muted" }, [
+                _vm._v("Non condivideremo il tuo indirizzo email con nessuno."),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Messaggio")]),
+              _vm._v(" "),
+              _c("textarea", {
+                staticClass: "form-control",
+                staticStyle: { resize: "none" },
+                attrs: {
+                  name: "message",
+                  id: "message",
+                  cols: "30",
+                  rows: "10",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              [_vm._v("Submit")]
+            ),
+          ]),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
