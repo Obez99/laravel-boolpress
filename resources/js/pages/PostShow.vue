@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :imageUrl="post.image" :title="post.title"></Header>
+    <Header :imageUrl="'/storage/' + post.image" :title="post.title"></Header>
     <main>
       <section class="post-show-section">
         <div class="container">
@@ -9,13 +9,14 @@
             <p class="post-content">{{ post.content }}</p>
             <strong class="post-date-user"
               >Creato il {{ formatDate(post.updated_at) }} da
-              {{ post.user.name }}</strong
+              {{ post.user ? post.user.name : null }}</strong
             >
             <div class="post-category">
               <span>Categoria: </span
-              ><strong :style="{ color: post.category.color }">{{
-                post.category.name
-              }}</strong>
+              ><strong
+                :style="{ color: post.category ? post.category.color : null }"
+                >{{ post.category ? post.category.name : null }}</strong
+              >
             </div>
           </div>
         </div>

@@ -667,6 +667,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PostShow",
@@ -2845,7 +2846,10 @@ var render = function () {
     "div",
     [
       _c("Header", {
-        attrs: { imageUrl: _vm.post.image, title: _vm.post.title },
+        attrs: {
+          imageUrl: "/storage/" + _vm.post.image,
+          title: _vm.post.title,
+        },
       }),
       _vm._v(" "),
       _c("main", [
@@ -2865,15 +2869,25 @@ var render = function () {
                   "Creato il " +
                     _vm._s(_vm.formatDate(_vm.post.updated_at)) +
                     " da\n            " +
-                    _vm._s(_vm.post.user.name)
+                    _vm._s(_vm.post.user ? _vm.post.user.name : null)
                 ),
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "post-category" }, [
                 _c("span", [_vm._v("Categoria: ")]),
-                _c("strong", { style: { color: _vm.post.category.color } }, [
-                  _vm._v(_vm._s(_vm.post.category.name)),
-                ]),
+                _c(
+                  "strong",
+                  {
+                    style: {
+                      color: _vm.post.category ? _vm.post.category.color : null,
+                    },
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(_vm.post.category ? _vm.post.category.name : null)
+                    ),
+                  ]
+                ),
               ]),
             ]),
           ]),
