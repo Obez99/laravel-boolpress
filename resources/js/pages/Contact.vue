@@ -10,20 +10,35 @@
         <div class="container py-5">
           <h2>Compila il seguente form per contattarci.</h2>
 
-          <form method="post" action="api/contacts">
+          <form @submit.prevent="emailSend()" v-if="isSent === false">
             <div class="form-group">
               <label>Nome</label>
-              <input type="text" name="name" class="form-control" />
+              <input
+                v-model="formData.name"
+                type="text"
+                name="name"
+                class="form-control"
+              />
             </div>
 
             <div class="form-group">
               <label>Cognome</label>
-              <input type="text" name="surname" class="form-control" />
+              <input
+                v-model="formData.surname"
+                type="text"
+                name="surname"
+                class="form-control"
+              />
             </div>
 
             <div class="form-group">
               <label>Indirizzo Email</label>
-              <input type="email" name="email" class="form-control" />
+              <input
+                v-model="formData.email"
+                type="email"
+                name="email"
+                class="form-control"
+              />
               <small class="form-text text-muted"
                 >Non condivideremo il tuo indirizzo email con nessuno.</small
               >
@@ -38,10 +53,15 @@
                 rows="10"
                 class="form-control"
                 style="resize: none"
+                v-model="formData.message"
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="submit" class="btn btn-primary" value="Invia" />
           </form>
+
+          <div class="alert alert-success" role="alert" v-else>
+            Email inviata correttamente.
+          </div>
         </div>
       </section>
     </main>
@@ -53,6 +73,24 @@ import Header from "../components/Header.vue";
 export default {
   name: "Contact",
   components: { Header },
+  data() {
+    return {
+      isSent: false,
+      formData: {
+        name: "",
+        surname: "",
+        email: "",
+        message: "",
+      },
+    };
+  },
+  methods: {
+    emailSend() {
+      window.axios.post("/api/contacts", this.formData).then((resp) => {
+        this.isSent = true;
+      });
+    },
+  },
 };
 </script>
 
