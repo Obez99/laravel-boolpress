@@ -33,7 +33,16 @@
                 </router-link>
               </ul>
             </aside>
-            <div class="posts col-6 offset-1">
+            <div
+              class="
+                posts
+                col-6
+                offset-1
+                d-flex
+                flex-column
+                justify-content-center
+              "
+            >
               <Post
                 v-for="post in posts"
                 :key="post.id"
@@ -45,13 +54,17 @@
                 :date="post.updated_at"
                 :slug="post.slug"
               ></Post>
-              <h2 v-if="posts.length === 0" class="text-center">
+              <h2 v-if="noPosts === true" class="text-center">
                 Nessun post disponibile, torna più tardi!
               </h2>
-              <div class="progress" v-if="posts.length === 0">
+              <div
+                class="progress"
+                v-if="posts.length === 0 && noPosts === false"
+              >
                 <div
                   class="
                     progress-bar progress-bar-striped progress-bar-animated
+                    w-100
                   "
                   role="progressbar"
                   aria-valuenow="100%"
@@ -90,6 +103,7 @@ export default {
       apiData: [],
       currentPage: 1,
       categoriesList: [],
+      noPosts: false,
     };
   },
   mounted() {
@@ -113,10 +127,15 @@ export default {
       window.axios.get("/api/posts?page=" + param).then((resp) => {
         this.apiData = resp.data;
         let response = resp.data.data;
-        response.forEach((item) => {
-          item.updated_at = this.formatDate(item.updated_at);
-          this.posts.push(item);
-        });
+
+        if (!response) {
+          this.noPosts = true;
+        } else {
+          response.forEach((item) => {
+            item.updated_at = this.formatDate(item.updated_at);
+            this.posts.push(item);
+          });
+        }
       });
     },
 

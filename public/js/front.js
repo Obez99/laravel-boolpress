@@ -429,7 +429,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categoryId: this.$route.params.category,
-      posts: []
+      posts: [],
+      categoriesList: []
     };
   }
 });
@@ -636,6 +637,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -651,7 +665,8 @@ __webpack_require__.r(__webpack_exports__);
       posts: [],
       apiData: [],
       currentPage: 1,
-      categoriesList: []
+      categoriesList: [],
+      noPosts: false
     };
   },
   mounted: function mounted() {
@@ -673,11 +688,16 @@ __webpack_require__.r(__webpack_exports__);
       window.axios.get("/api/posts?page=" + param).then(function (resp) {
         _this2.apiData = resp.data;
         var response = resp.data.data;
-        response.forEach(function (item) {
-          item.updated_at = _this2.formatDate(item.updated_at);
 
-          _this2.posts.push(item);
-        });
+        if (!response) {
+          _this2.noPosts = true;
+        } else {
+          response.forEach(function (item) {
+            item.updated_at = _this2.formatDate(item.updated_at);
+
+            _this2.posts.push(item);
+          });
+        }
       });
     },
     nextPage: function nextPage() {
@@ -2982,7 +3002,10 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "posts col-6 offset-1" },
+                {
+                  staticClass:
+                    "\n              posts\n              col-6\n              offset-1\n              d-flex\n              flex-column\n              justify-content-center\n            ",
+                },
                 [
                   _vm._l(_vm.posts, function (post) {
                     return _c("Post", {
@@ -2999,7 +3022,7 @@ var render = function () {
                     })
                   }),
                   _vm._v(" "),
-                  _vm.posts.length === 0
+                  _vm.noPosts === true
                     ? _c("h2", { staticClass: "text-center" }, [
                         _vm._v(
                           "\n              Nessun post disponibile, torna più tardi!\n            "
@@ -3007,11 +3030,11 @@ var render = function () {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.posts.length === 0
+                  _vm.posts.length === 0 && _vm.noPosts === false
                     ? _c("div", { staticClass: "progress" }, [
                         _c("div", {
                           staticClass:
-                            "\n                  progress-bar progress-bar-striped progress-bar-animated\n                ",
+                            "\n                  progress-bar progress-bar-striped progress-bar-animated\n                  w-100\n                ",
                           staticStyle: { width: "100%" },
                           attrs: {
                             role: "progressbar",

@@ -42,6 +42,7 @@ export default {
     return {
       categoryId: this.$route.params.category,
       posts: [],
+      categoriesList: [],
     };
   },
 };
