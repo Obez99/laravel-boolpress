@@ -14,7 +14,10 @@
               <ul class="list-group">
                 <router-link
                   v-for="category in categoriesList"
-                  :to="`/categories/${category.id}`"
+                  :to="{
+                    name: 'category',
+                    params: { category: category.id },
+                  }"
                   :key="category.id"
                   class="
                     list-group-item list-group-item-action
@@ -54,6 +57,7 @@
                 :date="post.updated_at"
                 :slug="post.slug"
               ></Post>
+
               <h2 v-if="noPosts === true" class="text-center">
                 Nessun post disponibile, torna più tardi!
               </h2>
@@ -168,7 +172,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .posts-section {
   min-height: 210px;
   background-color: lightgray;

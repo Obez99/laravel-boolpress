@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Header></Header>
+    <Header
+      :imageUrl="currentCategory.image"
+      :title="currentCategory.name"
+    ></Header>
     <main>
       <div class="posts-section">
         <div class="container">
@@ -36,6 +39,13 @@ export default {
     window.axios.get(`/api/categories/${this.categoryId}`).then((resp) => {
       this.posts = resp.data;
     });
+
+    window.axios.get("/api/categories").then((resp) => {
+      resp.data.forEach((category) => {
+        if (category.id === parseInt(this.$route.params.category))
+          this.currentCategory = category;
+      });
+    });
   },
 
   data() {
@@ -43,6 +53,7 @@ export default {
       categoryId: this.$route.params.category,
       posts: [],
       categoriesList: [],
+      currentCategory: [],
     };
   },
 };
