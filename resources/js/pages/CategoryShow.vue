@@ -42,7 +42,7 @@ export default {
 
     window.axios.get("/api/categories").then((resp) => {
       resp.data.forEach((category) => {
-        if (category.id === parseInt(this.$route.params.category))
+        if (category.id === parseInt(this.categoryId))
           this.currentCategory = category;
       });
     });
